@@ -1,0 +1,57 @@
+[
+  {
+    "nama": "Percobaan 1",
+    "kulit_naga_g": 100,
+    "air_ml": 200,
+    "gula_g": 50,
+    "suhu_c": 45,
+    "waktu_menit": 30,
+    "berhasil_set": true,
+    "skor_tekstur": 3,
+    "catatan": "Set tapi agak lembek, warnanya cerah"
+  },
+  {
+    "nama": "Percobaan 2",
+    "kulit_naga_g": 100,
+    "air_ml": 200,
+    "gula_g": 50,
+    "suhu_c": 60,
+    "waktu_menit": 30,
+    "berhasil_set": true,
+    "skor_tekstur": 4,
+    "catatan": "Tekstur lebih kenyal, warna sedikit pudar"
+  },
+  {
+    "nama": "Percobaan 3",
+    "kulit_naga_g": 100,
+    "air_ml": 200,
+    "gula_g": 50,
+    "suhu_c": 75,
+    "waktu_menit": 30,
+    "berhasil_set": true,
+    "skor_tekstur": 4,
+    "catatan": "Kenyal tapi warna pudar banget, agak gosong di pinggir"
+  },
+  {
+    "nama": "Percobaan 4",
+    "kulit_naga_g": 100,
+    "air_ml": 200,
+    "gula_g": 50,
+    "suhu_c": 60,
+    "waktu_menit": 60,
+    "berhasil_set": true,
+    "skor_tekstur": 5,
+    "catatan": "Paling halus dan pas kekenyalannya"
+  },
+  {
+    "nama": "Percobaan 5",
+    "kulit_naga_g": 100,
+    "air_ml": 300,
+    "gula_g": 50,
+    "suhu_c": 60,
+    "waktu_menit": 30,
+    "berhasil_set": false,
+    "skor_tekstur": 1,
+    "catatan": "Terlalu encer, air kebanyakan, gak set"
+  }
+]

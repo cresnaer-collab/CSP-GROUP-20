@@ -1,0 +1,66 @@
+* { box-sizing: border-box; }
+body {
+  font-family: system-ui, Arial, sans-serif;
+  background: #fdf6f0;
+  margin: 0;
+  padding: 20px;
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 24px;
+  border-radius: 8px;
+}
+h1 { margin: 0 0 4px 0; }
+.subtitle { color: #777; margin-top: 0; }
+h2 { margin-top: 32px; border-bottom: 2px solid #eb2f8c33; padding-bottom: 6px; }
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+}
+.info-card {
+  background: #fdf0f6;
+  border-radius: 8px;
+  padding: 14px;
+}
+.info-card h3 { margin: 0 0 6px 0; font-size: 15px; color: #c2185b; }
+.info-card p { margin: 0; font-size: 13px; color: #444; }
+
+.percobaan-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+  position: relative;
+}
+.percobaan-card.optimal {
+  border: 2px solid #c2185b;
+  background: #fff8fa;
+}
+.badge {
+  display: inline-block;
+  background: #c2185b;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+.percobaan-card h3 { margin: 0 0 8px 0; }
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 6px;
+  font-size: 14px;
+  color: #444;
+}
+.catatan {
+  margin: 10px 0 0 0;
+  font-style: italic;
+  color: #777;
+  font-size: 13px;
+}
