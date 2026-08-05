@@ -8,15 +8,24 @@
   <!-- Load Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Load CSS Flask -->
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+  <!-- Style agar Judul PitaJell Lurus (Ganti Font ke Inter) -->
+  <style>
+    .hero h1, .nav-brand {
+      font-family: 'Inter', sans-serif !important;
+      font-weight: 700 !important;
+      letter-spacing: -1px;
+    }
+  </style>
 </head>
 <body>
 
 <nav class="nav">
-  <span class="nav-brand">🐉 PitaJell</span>
+  <span class="nav-brand">PitaJell</span>
   <a href="#background">Background</a>
   <a href="#objectives">Objectives</a>
   <a href="#ingredients">About Ingredients</a>
@@ -33,8 +42,10 @@
   </div>
   
   <div class="hero-graphic">
-    <!-- EMOJI DRAGONFRUIT / DRAGON -->
-    <span style="font-size: 130px; display: block; line-height: 1; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));">🐉</span>
+    <!-- FOTO BUAH NAGA LOKAL DARI FOLDER STATIC -->
+    <img src="{{ url_for('static', filename='buah_naga.jpg') }}" 
+         alt="Dragon Fruit" 
+         style="width: 180px; height: 180px; object-fit: cover; border-radius: 50%; box-shadow: 0 10px 25px rgba(0,0,0,0.15);">
   </div>
 </div>
 
