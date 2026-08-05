@@ -1,66 +1,337 @@
-* { box-sizing: border-box; }
-body {
-  font-family: system-ui, Arial, sans-serif;
-  background: #fdf6f0;
-  margin: 0;
-  padding: 20px;
-}
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  background: #fff;
-  padding: 24px;
-  border-radius: 8px;
-}
-h1 { margin: 0 0 4px 0; }
-.subtitle { color: #777; margin-top: 0; }
-h2 { margin-top: 32px; border-bottom: 2px solid #eb2f8c33; padding-bottom: 6px; }
+/* ============================================
+   PitaJell — design tokens
+   Palet diambil dari penampang buah naga:
+   magenta kulit, hijau sirip daun, krem daging, hitam biji
+   ============================================ */
+:root {
+  --bg: #FBF3F5;
+  --ink: #201319;
+  --ink-soft: #5C4A52;
+  --magenta: #C81760;
+  --magenta-deep: #8C0F45;
+  --leaf: #4F7A32;
+  --leaf-light: #7FA85C;
+  --seed: #171012;
+  --card: #FCE7EF;
+  --card-leaf: #EEF4E4;
+  --line: #F0D3DE;
+  --paper: #FFFDFB;
 
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+
+  --radius: 14px;
+  --shadow: 0 4px 18px rgba(140, 15, 69, 0.08);
+  --shadow-hover: 0 10px 28px rgba(140, 15, 69, 0.15);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.55;
+}
+
+/* ============ NAV ============ */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 14px 32px;
+  background: rgba(251, 243, 245, 0.82);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+  overflow-x: auto;
+}
+.nav-brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  margin-right: 20px;
+  white-space: nowrap;
+  color: var(--magenta-deep);
+}
+.nav a {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding: 7px 12px;
+  border-radius: 20px;
+  white-space: nowrap;
+  transition: background .2s, color .2s;
+}
+.nav a:hover { background: var(--card); color: var(--magenta-deep); }
+.nav a.active { background: var(--magenta); color: #fff; }
+
+/* ============ LAYOUT ============ */
+.wrap { max-width: 880px; margin: 0 auto; padding: 0 32px 100px; }
+
+section { padding-top: 64px; }
+section:first-of-type { padding-top: 0; }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--magenta);
+  font-weight: 600;
+  margin: 0 0 8px 0;
+}
+h2 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 600;
+  margin: 0 0 22px 0;
+  color: var(--ink);
+}
+
+/* ============ HERO ============ */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 56px 32px 40px;
+  max-width: 880px;
+  margin: 0 auto;
+}
+.hero-text h1 {
+  font-family: var(--font-display);
+  font-size: 56px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1;
+  color: var(--magenta-deep);
+}
+.hero-text .tagline {
+  font-size: 17px;
+  color: var(--ink-soft);
+  margin: 14px 0 0 0;
+  max-width: 380px;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 18px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--leaf);
+  background: var(--card-leaf);
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+.hero-graphic { flex-shrink: 0; }
+.hero-graphic svg { animation: breathe 6s ease-in-out infinite; }
+@keyframes breathe {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.035) rotate(1.5deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-graphic svg { animation: none; }
+}
+
+/* ============ REVEAL ON SCROLL ============ */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+/* ============ EDITABLE SECTIONS ============ */
+.editable-box {
+  border: 1.5px dashed #E2AFC4;
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  background: var(--paper);
+  font-size: 15px;
+  color: var(--ink);
+  min-height: 110px;
+  outline: none;
+  transition: border-color .2s, background .2s;
+  white-space: pre-wrap;
+}
+.editable-box:hover { border-color: var(--magenta); }
+.editable-box:focus {
+  border: 1.5px solid var(--magenta);
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(200, 23, 96, 0.08);
+}
+.editable-box:empty::before {
+  content: attr(data-placeholder);
+  color: #B79AA7;
+  font-style: italic;
+}
+.editable-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 9px;
+  min-height: 18px;
+}
+.editable-meta .pencil { font-size: 12px; color: var(--ink-soft); opacity: .55; }
+.saved-flag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--leaf);
+  opacity: 0;
+  transition: opacity .3s;
+}
+.saved-flag.show { opacity: 1; }
+
+/* ============ INFO CARDS (Tentang Bahan) ============ */
 .info-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 14px;
 }
 .info-card {
-  background: #fdf0f6;
-  border-radius: 8px;
-  padding: 14px;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 20px;
+  transition: transform .25s ease, box-shadow .25s ease;
 }
-.info-card h3 { margin: 0 0 6px 0; font-size: 15px; color: #c2185b; }
-.info-card p { margin: 0; font-size: 13px; color: #444; }
+.info-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+.info-card h3 {
+  margin: 0 0 8px 0;
+  font-family: var(--font-display);
+  font-size: 16.5px;
+  color: var(--magenta-deep);
+}
+.info-card p { margin: 0; font-size: 13.5px; color: var(--ink-soft); }
+.info-card .stat {
+  font-family: var(--font-mono);
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--magenta);
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* ============ RESEP / PERCOBAAN SECTION ============ */
+.resep-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.resep-header p { margin: 0; color: var(--ink-soft); font-size: 13.5px; max-width: 420px; }
+
+.sort-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+.sort-control select {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  border: 1.5px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+}
+.sort-control select:focus { outline: 2px solid var(--magenta); }
 
 .percobaan-card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 12px;
-  position: relative;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  margin-bottom: 14px;
+  background: var(--paper);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s;
 }
+.percobaan-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
 .percobaan-card.optimal {
-  border: 2px solid #c2185b;
-  background: #fff8fa;
+  border: 2px solid var(--magenta);
+  background: linear-gradient(180deg, #FFF9FB 0%, var(--paper) 100%);
 }
 .badge {
-  display: inline-block;
-  background: #c2185b;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--magenta);
   color: #fff;
-  font-size: 12px;
-  font-weight: bold;
-  padding: 4px 10px;
-  border-radius: 12px;
-  margin-bottom: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 5px 11px;
+  border-radius: 20px;
+  margin-bottom: 10px;
 }
-.percobaan-card h3 { margin: 0 0 8px 0; }
+.badge-fail {
+  background: #F1EAEC; color: var(--ink-soft);
+}
+.percobaan-card h3 {
+  font-family: var(--font-display);
+  font-size: 19px;
+  margin: 0 0 12px 0;
+}
 .detail-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 6px;
-  font-size: 14px;
-  color: #444;
-}
-.catatan {
-  margin: 10px 0 0 0;
-  font-style: italic;
-  color: #777;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px 16px;
   font-size: 13px;
+}
+.detail-grid div { color: var(--ink-soft); }
+.detail-grid strong {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+  margin-bottom: 2px;
+  font-weight: 600;
+}
+.detail-grid .val { font-family: var(--font-mono); font-size: 15px; color: var(--ink); }
+.catatan {
+  margin: 14px 0 0 0;
+  padding-top: 12px;
+  border-top: 1px dashed var(--line);
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 13px;
+}
+
+/* ============ FOOTER ============ */
+footer {
+  text-align: center;
+  padding: 40px 32px;
+  color: var(--ink-soft);
+  font-size: 12.5px;
+  font-family: var(--font-mono);
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 640px) {
+  .hero { flex-direction: column; text-align: center; padding-top: 40px; }
+  .hero-text .tagline { max-width: none; }
+  .hero-graphic svg { width: 140px; height: 140px; }
+  .hero-text h1 { font-size: 40px; }
+  .wrap { padding: 0 18px 80px; }
+  .nav { padding: 12px 18px; }
+}
+
+/* keyboard focus visibility */
+a:focus-visible, select:focus-visible, .editable-box:focus-visible {
+  outline: 2px solid var(--magenta);
+  outline-offset: 2px;
 }

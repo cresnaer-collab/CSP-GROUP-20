@@ -2,9 +2,11 @@ import json
 import os
 from flask import Flask, jsonify, send_from_directory
 
-app = Flask(__name__, static_folder="static")
+# static_folder = folder saat ini (".") jadi semua file (html/css/js)
+# ada rata di root, sama kayak struktur folder di VS Code kamu
+app = Flask(__name__, static_folder=".", static_url_path="")
 
-DATA_PATH = os.path.join(os.path.dirname(__file__), "data", "percobaan.json")
+DATA_PATH = os.path.join(os.path.dirname(__file__), "percobaan.json")
 
 
 def load_percobaan():
@@ -14,25 +16,19 @@ def load_percobaan():
 
 @app.route("/")
 def index():
-    return send_from_directory(app.static_folder, "index.html")
+    return send_from_directory(".", "index.html")
 
 
-# --- API: ambil semua percobaan, sudah di-ranking dari yang paling optimal ---
 @app.route("/api/percobaan")
 def get_percobaan():
     data = load_percobaan()
 
     for p in data:
-        # skor optimal: harus berhasil "set" dulu (syarat mutlak),
-        # baru dinilai dari tekstur. Kalau gak set, otomatis di bawah.
         skor = (50 if p["berhasil_set"] else 0) + (p["skor_tekstur"] * 10)
         p["skor_optimal"] = skor
 
-    # urutkan: skor tertinggi duluan, kalau seri -> suhu paling rendah menang
-    # (lebih hemat energi, relevan sama tema waste treatment / efisiensi)
     data.sort(key=lambda p: (-p["skor_optimal"], p["suhu_c"], p["waktu_menit"]))
 
-    # tandai yang paling optimal
     for i, p in enumerate(data):
         p["rank"] = i + 1
         p["optimal"] = (i == 0)

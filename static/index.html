@@ -1,45 +1,139 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>PitaJell - Jelly Kulit Buah Naga</title>
-  <link rel="stylesheet" href="/static/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PitaJell — Jelly Kulit Buah Naga</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>🐉 PitaJell</h1>
-    <p class="subtitle">Jelly dari limbah kulit buah naga — solusi waste treatment</p>
 
-    <!-- SECTION 1: INFO MATERIAL -->
-    <section>
-      <h2>Tentang Bahan</h2>
-      <div class="info-grid">
-        <div class="info-card">
-          <h3>Pektin Alami</h3>
-          <p>Kulit buah naga mengandung pektin sekitar 9–17% dari berat keringnya —
-          cukup untuk membuat tekstur jelly tanpa gelatin tambahan.</p>
-        </div>
-        <div class="info-card">
-          <h3>Antioksidan</h3>
-          <p>Kulit buah naga kaya akan senyawa antioksidan (termasuk betasianin) yang
-          bermanfaat menjaga sel tubuh dari kerusakan.</p>
-        </div>
-        <div class="info-card">
-          <h3>Kenapa Ini Penting</h3>
-          <p>Kulit buah naga biasanya dibuang begitu saja padahal beratnya bisa
-          mencapai 25–45% dari total buah. Mengolahnya jadi jelly = mengurangi limbah.</p>
-        </div>
-      </div>
-    </section>
+<nav class="nav">
+  <span class="nav-brand">🐉 PitaJell</span>
+  <a href="#latar-belakang">Latar Belakang</a>
+  <a href="#tujuan">Tujuan</a>
+  <a href="#bahan">Tentang Bahan</a>
+  <a href="#kandungan">Kandungan</a>
+  <a href="#resep">Resep Optimal</a>
+  <a href="#pengembangan">Pengembangan</a>
+</nav>
 
-    <!-- SECTION 2: HASIL PERCOBAAN -->
-    <section>
-      <h2>Hasil Percobaan &amp; Resep Optimal</h2>
-      <p class="subtitle">Diurutkan otomatis dari yang paling optimal (berhasil set + tekstur terbaik)</p>
-      <div id="percobaan-list"></div>
-    </section>
+<div class="hero">
+  <div class="hero-text">
+    <div class="hero-badge">IBDP · Collaborative Science Project</div>
+    <h1>PitaJell</h1>
+    <p class="tagline">Mengubah limbah kulit buah naga jadi jelly berpektin alami — solusi waste treatment yang bisa dimakan.</p>
   </div>
+  <div class="hero-graphic">
+    <svg width="200" height="200" viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
+      <g id="fins">
+        <path d="M180,10 165,52 195,52 Z" fill="#4F7A32"/>
+      </g>
+      <use href="#fins" transform="rotate(36 180 180)"/>
+      <use href="#fins" transform="rotate(72 180 180)"/>
+      <use href="#fins" transform="rotate(108 180 180)"/>
+      <use href="#fins" transform="rotate(144 180 180)"/>
+      <use href="#fins" transform="rotate(180 180 180)"/>
+      <use href="#fins" transform="rotate(216 180 180)"/>
+      <use href="#fins" transform="rotate(252 180 180)"/>
+      <use href="#fins" transform="rotate(288 180 180)"/>
+      <use href="#fins" transform="rotate(324 180 180)"/>
+      <circle cx="180" cy="180" r="132" fill="#C81760"/>
+      <circle cx="180" cy="180" r="107" fill="#FFFDFB"/>
+      <circle cx="145" cy="150" r="4.5" fill="#171012"/>
+      <circle cx="205" cy="140" r="4" fill="#171012"/>
+      <circle cx="225" cy="175" r="4.5" fill="#171012"/>
+      <circle cx="150" cy="200" r="4" fill="#171012"/>
+      <circle cx="195" cy="215" r="4.5" fill="#171012"/>
+      <circle cx="170" cy="175" r="4" fill="#171012"/>
+      <circle cx="135" cy="185" r="3.5" fill="#171012"/>
+      <circle cx="215" cy="205" r="3.5" fill="#171012"/>
+      <circle cx="180" cy="130" r="3.5" fill="#171012"/>
+      <circle cx="150" cy="230" r="3.5" fill="#171012"/>
+    </svg>
+  </div>
+</div>
 
-  <script src="/static/script.js"></script>
+<div class="wrap">
+
+  <section id="latar-belakang" class="reveal">
+    <p class="eyebrow">01 — Konteks</p>
+    <h2>Latar Belakang</h2>
+    <div class="editable-box" contenteditable="true" data-key="latar_belakang"
+         data-placeholder="Klik di sini dan tulis latar belakang project kalian — misalnya soal masalah limbah kulit buah naga di kantin/rukan sekolah, data seberapa banyak limbahnya, dan kenapa ini perlu diselesaikan."></div>
+    <div class="editable-meta"><span class="pencil">✎ klik untuk edit</span><span class="saved-flag" data-flag="latar_belakang">tersimpan</span></div>
+  </section>
+
+  <section id="tujuan" class="reveal">
+    <p class="eyebrow">02 — Sasaran</p>
+    <h2>Tujuan</h2>
+    <div class="editable-box" contenteditable="true" data-key="tujuan"
+         data-placeholder="Tulis tujuan project kalian di sini — misalnya: mengurangi limbah kulit buah naga, memanfaatkan kandungan pektin & antioksidannya, menemukan resep jelly paling optimal, dst."></div>
+    <div class="editable-meta"><span class="pencil">✎ klik untuk edit</span><span class="saved-flag" data-flag="tujuan">tersimpan</span></div>
+  </section>
+
+  <section id="bahan" class="reveal">
+    <p class="eyebrow">03 — Material</p>
+    <h2>Tentang Bahan</h2>
+    <div class="info-grid">
+      <div class="info-card">
+        <span class="stat">9–17%</span>
+        <h3>Pektin Alami</h3>
+        <p>Persentase pektin dari berat kering kulit buah naga — cukup untuk membentuk tekstur jelly tanpa gelatin tambahan.</p>
+      </div>
+      <div class="info-card">
+        <h3>Antioksidan</h3>
+        <p>Kulit buah naga kaya senyawa antioksidan (termasuk betasianin) yang bermanfaat menjaga sel tubuh dari kerusakan.</p>
+      </div>
+      <div class="info-card">
+        <span class="stat">25–45%</span>
+        <h3>Berat Terbuang</h3>
+        <p>Proporsi berat kulit dari total buah naga yang biasanya langsung dibuang — inilah limbah yang PitaJell olah kembali.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="kandungan" class="reveal">
+    <p class="eyebrow">04 — Komposisi</p>
+    <h2>Kandungan</h2>
+    <div class="editable-box" contenteditable="true" data-key="kandungan"
+         data-placeholder="Tulis rincian kandungan gizi/nutrisi PitaJell di sini — misalnya hasil uji kadar gula, serat, vitamin C, atau kandungan lain per takaran saji."></div>
+    <div class="editable-meta"><span class="pencil">✎ klik untuk edit</span><span class="saved-flag" data-flag="kandungan">tersimpan</span></div>
+  </section>
+
+  <section id="resep" class="reveal">
+    <p class="eyebrow">05 — Hasil Eksperimen</p>
+    <div class="resep-header">
+      <div>
+        <h2 style="margin-bottom:6px;">Hasil Percobaan &amp; Resep Optimal</h2>
+        <p>Diurutkan otomatis oleh backend — berhasil set + skor tekstur tertinggi menang.</p>
+      </div>
+      <div class="sort-control">
+        <label for="sort-select">urutkan:</label>
+        <select id="sort-select">
+          <option value="optimal">Skor optimal</option>
+          <option value="suhu">Suhu (rendah→tinggi)</option>
+          <option value="waktu">Waktu (cepat→lama)</option>
+          <option value="tekstur">Skor tekstur</option>
+        </select>
+      </div>
+    </div>
+    <div id="percobaan-list"></div>
+  </section>
+
+  <section id="pengembangan" class="reveal">
+    <p class="eyebrow">06 — Ke Depan</p>
+    <h2>Pengembangan Selanjutnya</h2>
+    <div class="editable-box" contenteditable="true" data-key="pengembangan"
+         data-placeholder="Tulis rencana pengembangan PitaJell ke depan — misalnya uji coba skala lebih besar, variasi rasa, kerja sama dengan kantin sekolah, dsb."></div>
+    <div class="editable-meta"><span class="pencil">✎ klik untuk edit</span><span class="saved-flag" data-flag="pengembangan">tersimpan</span></div>
+  </section>
+
+  <footer>PitaJell — IBDP Collaborative Science Project · Waste Treatment</footer>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
