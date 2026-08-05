@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PitaJell — Jelly Kulit Buah Naga</title>
 
-  <!-- Load Google Fonts (Fraunces, Inter, IBM Plex Mono) -->
+  <!-- Load Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -31,33 +31,13 @@
     <h1>PitaJell</h1>
     <p class="tagline">Mengubah limbah kulit buah naga jadi jelly berpektin alami — solusi waste treatment yang bisa dimakan.</p>
   </div>
+  
   <div class="hero-graphic">
-    <svg width="200" height="200" viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
-      <g id="fins">
-        <path d="M180,10 165,52 195,52 Z" fill="#4F7A32"/>
-      </g>
-      <use href="#fins" transform="rotate(36 180 180)"/>
-      <use href="#fins" transform="rotate(72 180 180)"/>
-      <use href="#fins" transform="rotate(108 180 180)"/>
-      <use href="#fins" transform="rotate(144 180 180)"/>
-      <use href="#fins" transform="rotate(180 180 180)"/>
-      <use href="#fins" transform="rotate(216 180 180)"/>
-      <use href="#fins" transform="rotate(252 180 180)"/>
-      <use href="#fins" transform="rotate(288 180 180)"/>
-      <use href="#fins" transform="rotate(324 180 180)"/>
-      <circle cx="180" cy="180" r="132" fill="#C81760"/>
-      <circle cx="180" cy="180" r="107" fill="#FFFDFB"/>
-      <circle cx="145" cy="150" r="4.5" fill="#171012"/>
-      <circle cx="205" cy="140" r="4" fill="#171012"/>
-      <circle cx="225" cy="175" r="4.5" fill="#171012"/>
-      <circle cx="150" cy="200" r="4" fill="#171012"/>
-      <circle cx="195" cy="215" r="4.5" fill="#171012"/>
-      <circle cx="170" cy="175" r="4" fill="#171012"/>
-      <circle cx="135" cy="185" r="3.5" fill="#171012"/>
-      <circle cx="215" cy="205" r="3.5" fill="#171012"/>
-      <circle cx="180" cy="130" r="3.5" fill="#171012"/>
-      <circle cx="150" cy="230" r="3.5" fill="#171012"/>
-    </svg>
+    <!-- EMOJI DRAGONFRUIT / DRAGON -->
+    <span style="font-size: 130px; display: block; line-height: 1; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));">🐉</span>
+    
+    <!-- Kalau nanti ada foto beneran (.png / .jpg), tinggal hapus emoji di atas lalu pakai baris di bawah ini: -->
+    <!-- <img src="{{ url_for('static', filename='foto_buah_naga.png') }}" alt="Buah Naga" style="width: 200px; height: auto;"> -->
   </div>
 </div>
 
@@ -66,17 +46,17 @@
   <section id="latar-belakang" class="reveal">
     <p class="eyebrow">01 — Konteks</p>
     <h2>Latar Belakang</h2>
-    <div class="editable-box" contenteditable="true" data-key="latar_belakang"
-         data-placeholder="Klik di sini dan tulis latar belakang project kalian — misalnya soal masalah limbah kulit buah naga di kantin/rukan sekolah, data seberapa banyak limbahnya, dan kenapa ini perlu diselesaikan."></div>
-    <div class="editable-meta"><span class="pencil">✎ klik untuk edit</span><span class="saved-flag" data-flag="latar_belakang">tersimpan</span></div>
+    <p style="font-size: 16px; line-height: 1.6; color: #201319; margin-top: 12px;">
+      Limbah kulit buah naga sering kali langsung dibuang begitu saja, padahal proporsinya mencapai 25–45% dari total berat buah. Project PitaJell hadir sebagai solusi <em>waste treatment</em> untuk mengolah limbah tersebut menjadi produk jelly bernutrisi tinggi.
+    </p>
   </section>
 
   <section id="tujuan" class="reveal">
     <p class="eyebrow">02 — Sasaran</p>
     <h2>Tujuan</h2>
-    <div class="editable-box" contenteditable="true" data-key="tujuan"
-         data-placeholder="Tulis tujuan project kalian di sini — misalnya: mengurangi limbah kulit buah naga, memanfaatkan kandungan pektin & antioksidannya, menemukan resep jelly paling optimal, dst."></div>
-    <div class="editable-meta"><span class="pencil">✎ klik untuk edit</span><span class="saved-flag" data-flag="tujuan">tersimpan</span></div>
+    <p style="font-size: 16px; line-height: 1.6; color: #201319; margin-top: 12px;">
+      Mengurangi sampah organik kulit buah naga di lingkungan sekolah, mengoptimalkan ekstraksi kandungan pektin alami serta antioksidan, dan menemukan resep jelly dengan skor tekstur paling optimal.
+    </p>
   </section>
 
   <section id="bahan" class="reveal">
@@ -103,9 +83,9 @@
   <section id="kandungan" class="reveal">
     <p class="eyebrow">04 — Komposisi</p>
     <h2>Kandungan</h2>
-    <div class="editable-box" contenteditable="true" data-key="kandungan"
-         data-placeholder="Tulis rincian kandungan gizi/nutrisi PitaJell di sini — misalnya hasil uji kadar gula, serat, vitamin C, atau kandungan lain per takaran saji."></div>
-    <div class="editable-meta"><span class="pencil">✎ klik untuk edit</span><span class="saved-flag" data-flag="kandungan">tersimpan</span></div>
+    <p style="font-size: 16px; line-height: 1.6; color: #201319; margin-top: 12px;">
+      PitaJell kaya akan serat pangan alami, vitamin C, serta pigmen betasianin yang bertindak sebagai antioksidan alami penangkal radikal bebas tanpa memerlukan zat pewarna sintetis buatan.
+    </p>
   </section>
 
   <section id="resep" class="reveal">
@@ -131,9 +111,9 @@
   <section id="pengembangan" class="reveal">
     <p class="eyebrow">06 — Ke Depan</p>
     <h2>Pengembangan Selanjutnya</h2>
-    <div class="editable-box" contenteditable="true" data-key="pengembangan"
-         data-placeholder="Tulis rencana pengembangan PitaJell ke depan — misalnya uji coba skala lebih besar, variasi rasa, kerja sama dengan kantin sekolah, dsb."></div>
-    <div class="editable-meta"><span class="pencil">✎ klik untuk edit</span><span class="saved-flag" data-flag="pengembangan">tersimpan</span></div>
+    <p style="font-size: 16px; line-height: 1.6; color: #201319; margin-top: 12px;">
+      Rencana pengembangan mencakup pengujian tingkat kesukaan (*organoleptic test*) pada responden yang lebih luas, eksplorasi variasi rasa alami, serta potensi kerja sama dengan kantin sekolah.
+    </p>
   </section>
 
   <footer>PitaJell — IBDP Collaborative Science Project · Waste Treatment</footer>
