@@ -1,10 +1,9 @@
 import json
 import os
-from flask import Flask, jsonify, send_from_directory
+from flask import Flask, jsonify, render_template
 
-# static_folder = folder saat ini (".") jadi semua file (html/css/js)
-# ada rata di root, sama kayak struktur folder di VS Code kamu
-app = Flask(__name__, static_folder=".", static_url_path="")
+# Gunakan standar Flask (otomatis membaca folder templates/ dan static/)
+app = Flask(__name__)
 
 DATA_PATH = os.path.join(os.path.dirname(__file__), "percobaan.json")
 
@@ -16,7 +15,8 @@ def load_percobaan():
 
 @app.route("/")
 def index():
-    return send_from_directory(".", "index.html")
+    # Mengambil index.html dari dalam folder templates/
+    return render_template("index.html")
 
 
 @app.route("/api/percobaan")
@@ -31,7 +31,7 @@ def get_percobaan():
 
     for i, p in enumerate(data):
         p["rank"] = i + 1
-        p["optimal"] = (i == 0)
+        p["optimal"] = i == 0
 
     return jsonify(data)
 
