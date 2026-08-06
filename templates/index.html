@@ -13,7 +13,7 @@
   <!-- Load CSS Flask -->
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
-  <!-- Style agar Judul PitaJell Lurus (Ganti Font ke Inter) -->
+  <!-- Custom font override untuk Judul -->
   <style>
     .hero h1, .nav-brand {
       font-family: 'Inter', sans-serif !important;
@@ -36,22 +36,20 @@
 
 <div class="hero">
   <div class="hero-text">
-    <div class="hero-badge">IBDP · Collaborative Science Project</div>
     <h1>PitaJell</h1>
     <p class="tagline">Turning dragon fruit peel waste into natural pectin jelly — an edible waste treatment solution.</p>
   </div>
   
- <div class="hero-graphic">
-    <!-- MEMANGGIL FILE buah_naga.png TRANSPARAN -->
-    <img src="{{ url_for('static', filename='buah_naga.png') }}" 
+  <div class="hero-graphic">
+    <img src="{{ url_for('static', filename='buah_naga.jpeg') }}" 
          alt="Dragon Fruit" 
-         style="width: 220px; height: auto; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.15));">
-  </div>
+         style="width: 200px; height: auto; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
   </div>
 </div>
 
 <div class="wrap">
 
+  <!-- Hanya 01 - Context yang dipertahankan -->
   <section id="background" class="reveal">
     <p class="eyebrow">01 — Context</p>
     <h2>Background</h2>
@@ -61,7 +59,6 @@
   </section>
 
   <section id="objectives" class="reveal">
-    <p class="eyebrow">02 — Goals</p>
     <h2>Objectives</h2>
     <p style="font-size: 16px; line-height: 1.6; color: #201319; margin-top: 12px;">
       To reduce organic dragon fruit peel waste in the school environment, optimize the extraction of natural pectin and antioxidants, and discover the jelly recipe with the most optimal texture score.
@@ -69,7 +66,6 @@
   </section>
 
   <section id="ingredients" class="reveal">
-    <p class="eyebrow">03 — Materials</p>
     <h2>About Ingredients</h2>
     <div class="info-grid">
       <div class="info-card">
@@ -90,7 +86,6 @@
   </section>
 
   <section id="nutrition" class="reveal">
-    <p class="eyebrow">04 — Composition</p>
     <h2>Nutritional Content</h2>
     <p style="font-size: 16px; line-height: 1.6; color: #201319; margin-top: 12px;">
       PitaJell is rich in natural dietary fiber, vitamin C, and betacyanin pigments that act as natural antioxidants against free radicals without artificial food coloring.
@@ -98,7 +93,6 @@
   </section>
 
   <section id="recipe" class="reveal">
-    <p class="eyebrow">05 — Experiment Results</p>
     <div class="resep-header">
       <div>
         <h2 style="margin-bottom:6px;">Experimental Results &amp; Optimal Recipe</h2>
@@ -118,14 +112,12 @@
   </section>
 
   <section id="future" class="reveal">
-    <p class="eyebrow">06 — Next Steps</p>
     <h2>Future Development</h2>
     <p style="font-size: 16px; line-height: 1.6; color: #201319; margin-top: 12px;">
       Future plans include organoleptic testing (taste preference tests) across a broader group of respondents, exploring natural flavor variations, and potential collaboration with the school canteen.
     </p>
   </section>
 
-  <footer>PitaJell — IBDP Collaborative Science Project · Waste Treatment</footer>
 </div>
 
 <!-- Load JS Flask -->
