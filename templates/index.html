@@ -41,17 +41,16 @@
   </div>
   
   <div class="hero-graphic">
-    <img src="{{ url_for('static', filename='buah_naga.jpeg') }}" 
+    <!-- MEMANGGIL FILE buah_naga.png DENGAN EFEK BAYANGAN TRANSPARAN -->
+    <img src="{{ url_for('static', filename='buah_naga.png') }}" 
          alt="Dragon Fruit" 
-         style="width: 200px; height: auto; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+         style="width: 200px; height: auto; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.15));">
   </div>
 </div>
 
 <div class="wrap">
 
-  <!-- Hanya 01 - Context yang dipertahankan -->
   <section id="background" class="reveal">
-    <p class="eyebrow">01 — Context</p>
     <h2>Background</h2>
     <p style="font-size: 16px; line-height: 1.6; color: #201319; margin-top: 12px;">
       Dragon fruit peel waste is often discarded, even though it accounts for 25–45% of the total fruit weight. The PitaJell project serves as a waste treatment solution to process this waste into a highly nutritious jelly product.
