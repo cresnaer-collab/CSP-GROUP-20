@@ -1,122 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PitaJell - Collaborative Science Project</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <style>
-        /* CSS Tambahan Khusus Hero Section & Gambar */
-        .hero-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PitaJell — Dragon Fruit Peel Jelly</title>
 
-        .hero-text {
-            flex: 1;
-        }
+  <!-- Load Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-        .hero-image-wrapper {
-            flex-shrink: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+  <!-- Load CSS Flask -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
-        /* Gambar buah naga tanpa potongan lingkaran */
-        .hero-image {
-            width: 220px;
-            height: auto;
-            max-width: 100%;
-            /* Memberikan efek bayangan halus agar timbul rapi */
-            filter: drop-shadow(0px 10px 20px rgba(184, 15, 80, 0.15));
-            transition: transform 0.3s ease;
-        }
-
-        .hero-image:hover {
-            transform: translateY(-5px);
-        }
-    </style>
+  <!-- Style agar Judul PitaJell Lurus (Ganti Font ke Inter) -->
+  <style>
+    .hero h1, .nav-brand {
+      font-family: 'Inter', sans-serif !important;
+      font-weight: 700 !important;
+      letter-spacing: -1px;
+    }
+  </style>
 </head>
 <body>
 
-    <!-- NAVBAR -->
-    <header class="navbar">
-        <div class="logo">PitaJell</div>
-        <nav>
-            <a href="#background" class="active">Background</a>
-            <a href="#objectives">Objectives</a>
-            <a href="#ingredients">About Ingredients</a>
-            <a href="#nutrition">Nutritional Content</a>
-            <a href="#recipe">Optimal Recipe</a>
-            <a href="#future">Future Development</a>
-        </nav>
-    </header>
+<nav class="nav">
+  <span class="nav-brand">PitaJell</span>
+  <a href="#background">Background</a>
+  <a href="#objectives">Objectives</a>
+  <a href="#ingredients">About Ingredients</a>
+  <a href="#nutrition">Nutritional Content</a>
+  <a href="#recipe">Optimal Recipe</a>
+  <a href="#future">Future Development</a>
+</nav>
 
-    <main class="container">
-        <!-- HERO SECTION -->
-        <section class="hero-container">
-            <div class="hero-text">
-                <span class="badge">IBDP · COLLABORATIVE SCIENCE PROJECT</span>
-                <h1 class="main-title">PitaJell</h1>
-                <p class="subtitle">
-                    Turning dragon fruit peel waste into natural pectin jelly — an edible waste treatment solution.
-                </p>
-            </div>
-            <div class="hero-image-wrapper">
-                <!-- Jika filenya .png hasil remove.bg, ganti ke 'buah_naga.png' -->
-                <img src="{{ url_for('static', filename='buah_naga.jpeg') }}" 
-                     alt="Dragon Fruit Character" 
-                     class="hero-image">
-            </div>
-        </section>
+<div class="hero">
+  <div class="hero-text">
+    <div class="hero-badge">IBDP · Collaborative Science Project</div>
+    <h1>PitaJell</h1>
+    <p class="tagline">Turning dragon fruit peel waste into natural pectin jelly — an edible waste treatment solution.</p>
+  </div>
+  
+  <div class="hero-graphic">
+    <!-- FOTO BUAH NAGA LOKAL DARI FOLDER STATIC -->
+    <img src="{{ url_for('static', filename='buah_naga.jpg') }}" 
+         alt="Dragon Fruit" 
+         style="width: 180px; height: 180px; object-fit: cover; border-radius: 50%; box-shadow: 0 10px 25px rgba(0,0,0,0.15);">
+  </div>
+</div>
 
-        <!-- SECTION 01: BACKGROUND -->
-        <section id="background" class="content-section">
-            <span class="section-number">01 — CONTEXT</span>
-            <h2>Background</h2>
-            <p>
-                Dragon fruit peel waste is often discarded, even though it accounts for 25–45% of the total fruit weight. 
-                The PitaJell project serves as a waste treatment solution to process this waste into a highly nutritious jelly product.
-            </p>
-        </section>
+<div class="wrap">
 
-        <!-- SECTION 02: OBJECTIVES -->
-        <section id="objectives" class="content-section">
-            <span class="section-number">02 — GOALS</span>
-            <h2>Objectives</h2>
-            <p>
-                To reduce organic dragon fruit peel waste in the school environment, optimize the extraction of natural pectin 
-                and antioxidants, and discover the jelly recipe with the most optimal texture score.
-            </p>
-        </section>
+  <section id="background" class="reveal">
+    <p class="eyebrow">01 — Context</p>
+    <h2>Background</h2>
+    <p style="font-size: 16px; line-height: 1.6; color: #201319; margin-top: 12px;">
+      Dragon fruit peel waste is often discarded, even though it accounts for 25–45% of the total fruit weight. The PitaJell project serves as a waste treatment solution to process this waste into a highly nutritious jelly product.
+    </p>
+  </section>
 
-        <!-- SECTION 03: ABOUT INGREDIENTS -->
-        <section id="ingredients" class="content-section">
-            <span class="section-number">03 — MATERIALS</span>
-            <h2>About Ingredients</h2>
-            
-            <div class="cards-grid">
-                <div class="card">
-                    <span class="card-stat">9–17%</span>
-                    <h3>Natural Pectin</h3>
-                    <p>Percentage of pectin extracted from dry dragon fruit peel.</p>
-                </div>
-                <div class="card">
-                    <h3>Antioxidants</h3>
-                    <p>Dragon fruit peel is rich in antioxidant compounds (including betacyanin) that help protect body cells.</p>
-                </div>
-                <div class="card">
-                    <span class="card-stat">25–45%</span>
-                    <h3>Wasted Weight</h3>
-                    <p>Proportion of peel weight relative to the whole fruit.</p>
-                </div>
-            </div>
-        </section>
-    </main>
+  <section id="objectives" class="reveal">
+    <p class="eyebrow">02 — Goals</p>
+    <h2>Objectives</h2>
+    <p style="font-size: 16px; line-height: 1.6; color: #201319; margin-top: 12px;">
+      To reduce organic dragon fruit peel waste in the school environment, optimize the extraction of natural pectin and antioxidants, and discover the jelly recipe with the most optimal texture score.
+    </p>
+  </section>
 
+  <section id="ingredients" class="reveal">
+    <p class="eyebrow">03 — Materials</p>
+    <h2>About Ingredients</h2>
+    <div class="info-grid">
+      <div class="info-card">
+        <span class="stat">9–17%</span>
+        <h3>Natural Pectin</h3>
+        <p>Percentage of pectin from dry weight of dragon fruit peel — sufficient to form jelly texture without added gelatin.</p>
+      </div>
+      <div class="info-card">
+        <h3>Antioxidants</h3>
+        <p>Dragon fruit peel is rich in antioxidant compounds (including betacyanin) that help protect body cells from damage.</p>
+      </div>
+      <div class="info-card">
+        <span class="stat">25–45%</span>
+        <h3>Wasted Weight</h3>
+        <p>Proportion of peel weight relative to total fruit usually discarded — this is the waste PitaJell reprocesses.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="nutrition" class="reveal">
+    <p class="eyebrow">04 — Composition</p>
+    <h2>Nutritional Content</h2>
+    <p style="font-size: 16px; line-height: 1.6; color: #201319; margin-top: 12px;">
+      PitaJell is rich in natural dietary fiber, vitamin C, and betacyanin pigments that act as natural antioxidants against free radicals without artificial food coloring.
+    </p>
+  </section>
+
+  <section id="recipe" class="reveal">
+    <p class="eyebrow">05 — Experiment Results</p>
+    <div class="resep-header">
+      <div>
+        <h2 style="margin-bottom:6px;">Experimental Results &amp; Optimal Recipe</h2>
+        <p>Automatically sorted by backend — successful set + highest texture score wins.</p>
+      </div>
+      <div class="sort-control">
+        <label for="sort-select">Sort by:</label>
+        <select id="sort-select">
+          <option value="optimal">Optimal Score</option>
+          <option value="suhu">Temperature (low → high)</option>
+          <option value="waktu">Time (fast → slow)</option>
+          <option value="tekstur">Texture score</option>
+        </select>
+      </div>
+    </div>
+    <div id="percobaan-list"></div>
+  </section>
+
+  <section id="future" class="reveal">
+    <p class="eyebrow">06 — Next Steps</p>
+    <h2>Future Development</h2>
+    <p style="font-size: 16px; line-height: 1.6; color: #201319; margin-top: 12px;">
+      Future plans include organoleptic testing (taste preference tests) across a broader group of respondents, exploring natural flavor variations, and potential collaboration with the school canteen.
+    </p>
+  </section>
+
+  <footer>PitaJell — IBDP Collaborative Science Project · Waste Treatment</footer>
+</div>
+
+<!-- Load JS Flask -->
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
