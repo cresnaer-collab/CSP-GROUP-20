@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PitaJell — Dragon Fruit Peel Jelly | IBDP CSP</title>
-  <meta name="description" content="PitaJell transforms dragon fruit peel waste into natural pectin jelly — an edible organic waste treatment solution by SMA Pradita Dirgantara.">
+  <title>PitaJell — Dragon Fruit Peel Jelly | CSP Group 20</title>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='buah_naga.png') }}">
+
+  <meta name="description" content="PitaJell transforms dragon fruit waste into natural edible jelly — a sustainable food innovation project by CSP Group 20, SMA Pradita Dirgantara.">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,13 +21,13 @@
 <!-- ════════════════ STICKY NAVIGATION ════════════════ -->
 <nav class="nav" id="main-nav">
   <span class="nav-brand">PitaJell</span>
-  <div class="nav-links">
+  <div class="nav-links" id="nav-links">
     <a href="#background">Background</a>
-    <a href="#contents">Product Content</a>
-    <a href="#stem">STEM Breakdown</a>
-    <a href="#methodology">Tools &amp; Methodology</a>
-    <a href="#calculator">Recipe Calculator</a>
-    <a href="#results">Experimental Results</a>
+    <a href="#contents">Contents</a>
+    <a href="#stem">STEM Framework</a>
+    <a href="#methodology">Methodology</a>
+    <a href="#budget">Budget</a>
+    <a href="#references">References</a>
   </div>
   <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
     <span></span><span></span><span></span>
@@ -42,15 +44,17 @@
       <h1>PitaJell</h1>
       <p class="tagline">Turning dragon fruit waste into edible jelly.</p>
       <div class="hero-actions">
-        <a href="#calculator" class="btn btn-primary">Try Calculator</a>
-        <a href="#background" class="btn btn-ghost">Learn More ↓</a>
+        <a href="#methodology" class="btn btn-primary">Explore Recipe</a>
+        <a href="#stem" class="btn btn-outline">STEM Framework</a>
       </div>
     </div>
 
     <div class="hero-graphic">
-      <div class="hero-mascot-wrap">
-        <div class="hero-glow"></div>
-        <img src="{{ url_for('static', filename='buah_naga.png') }}" alt="PitaJell Mascot — Dragon Fruit Character" class="hero-mascot">
+      <div class="mascot-container">
+        <div class="speech-bubble">Hello!! 👋</div>
+        <div class="mascot-wrap">
+          <img src="{{ url_for('static', filename='buah_naga.png') }}" alt="PitaJell Mascot — Dragon Fruit Character" class="hero-mascot">
+        </div>
       </div>
     </div>
   </div>
@@ -59,268 +63,336 @@
 <!-- ════════════════ MAIN CONTENT ════════════════ -->
 <main class="wrap">
 
-  <!-- ───── SECTION 01: BACKGROUND ───── -->
+  <!-- ───── SECTION A: BACKGROUND ───── -->
   <section id="background" class="section reveal">
     <h2>Background</h2>
-    <div class="section-body">
-      <p>In SMA Pradita Dirgantara, students and campus residents mostly eat from rukan (kitchen/canteen). Most of the time, the kitchen does not utilize every single ingredient they have, causing ingredient waste to pile up and creating a problem that needs to be solved.</p>
+    <div class="bg-card">
+      <p>In SMA Pradita Dirgantara, students and citizens mostly eat from rukan. But most of the time, the kitchen won't use every single ingredient they have, hence waste from ingredients begins to pile up, creating a problem needing to be solved.</p>
     </div>
   </section>
 
-  <!-- ───── SECTION 02: CONTENTS & BIOACTIVE PROPERTIES ───── -->
+  <!-- ───── SECTION B: CONTENTS OF A DRAGON FRUIT ───── -->
   <section id="contents" class="section reveal">
-    <h2>Contents &amp; Bioactive Properties of Dragon Fruit</h2>
-    <p class="section-intro">The Dragon fruit (<em>Hylocereus spp.</em>) contains bioactive phytochemical compounds with potent health-promoting properties.</p>
+    <h2>Contents of a Dragon Fruit</h2>
+    <p class="section-sub">The Dragon fruit (<em>Hylocereus spp.</em>) has lots of nutritious and beneficial components that are rich in various bioactive phytochemical compounds:</p>
 
     <div class="content-grid">
       <div class="content-card">
         <h3>Phenolic Acids &amp; Flavonoids</h3>
-        <p>Powerful polyphenolic compounds that scavenge free radicals and protect cellular structures from oxidative damage.</p>
+        <p>Active antioxidants helping eliminate free radicals and protect cellular structures.</p>
         <span class="content-tag">Antioxidant</span>
       </div>
       <div class="content-card">
         <h3>Betalains</h3>
-        <p>Natural red-violet pigments responsible for the vibrant color of dragon fruit peel. Exhibit strong anti-inflammatory activity.</p>
+        <p>Natural red-violet pigments responsible for vibrant color and active anti-inflammatory activity.</p>
         <span class="content-tag">Anti-inflammatory</span>
       </div>
       <div class="content-card">
         <h3>Anthocyanins</h3>
-        <p>Water-soluble pigments with demonstrated antimicrobial properties against common foodborne pathogens.</p>
+        <p>Water-soluble pigments with demonstrated antimicrobial properties.</p>
         <span class="content-tag">Anti-microbial</span>
       </div>
-      <div class="content-card">
-        <h3>Functional Benefits</h3>
-        <p>Combined bioactive profile supports cellular health, immune function, and provides natural food coloring without synthetic additives.</p>
-        <span class="content-tag">Cellular Health</span>
-      </div>
     </div>
   </section>
 
-  <!-- ───── SECTION 03: STEM BREAKDOWN ───── -->
+  <!-- ───── SECTION C: INTERDISCIPLINARY STEM FRAMEWORK ───── -->
   <section id="stem" class="section reveal">
-    <h2>Interdisciplinary STEM Breakdown</h2>
-    <p class="section-intro">PitaJell integrates all four STEM disciplines into a cohesive, real-world waste treatment project.</p>
+    <h2>Interdisciplinary STEM Framework</h2>
+    <p class="section-sub">Integrating Science, Technology, Engineering, and Mathematics for sustainable food innovation:</p>
 
-    <div class="stem-grid">
-      <div class="stem-card stem-card--bio">
-        <span class="stem-label">Biology</span>
-        <p>Examine nutrient content &amp; antioxidant properties (phenolic acids, flavonoids, betalains, anthocyanins) in dragon fruit skin and flesh.</p>
+    <div class="bento-grid">
+      <!-- SCIENCE -->
+      <div class="bento-card bento-card--science">
+        <span class="bento-discipline">Science</span>
+        <ul class="bento-points">
+          <li>
+            <strong>Bioactive Compounds</strong>
+            Dragon fruit (both flesh and skin) provides antioxidants, anti-inflammatory, and antimicrobial agents such as flavonoids, phenolic acids, betalains, and anthocyanins.
+          </li>
+          <li>
+            <strong>Sustainability &amp; Nutrition</strong>
+            Utilizing the skin alongside the flesh minimizes biological waste while maximizing dietary fiber and nutritional value.
+          </li>
+          <li>
+            <strong>Gel Formation</strong>
+            Gelatin molecules cross-link upon cooling to form a semi-solid gel matrix, creating the classic chewy texture.
+          </li>
+          <li>
+            <strong>Solute &amp; pH Dynamics</strong>
+            Dissolved sugars act as natural preservatives and flavor enhancers, while citric acid adjusts the pH to balance flavor and ensure product stability.
+          </li>
+        </ul>
       </div>
-      <div class="stem-card stem-card--chem">
-        <span class="stem-label">Chemistry</span>
-        <p>Make the substance gelatinous using natural pectin from dragon fruit skin waste combined with gelatin (100g), sugar (380g), cornstarch (½ tsp), and citric acid (½ tsp).</p>
+
+      <!-- TECHNOLOGY -->
+      <div class="bento-card bento-card--tech">
+        <span class="bento-discipline">Technology</span>
+        <ul class="bento-points">
+          <li>
+            <strong>Interactive Website</strong>
+            Develops an interactive website to display product ingredients, educational material, and targeted marketing/promotional content.
+          </li>
+        </ul>
       </div>
-      <div class="stem-card stem-card--phys">
-        <span class="stem-label">Physics</span>
-        <p>Analyze and ensure jelly texture is smooth via blending; find optimal temperature for setting across steaming (10 mins), stove cooking, and refrigeration.</p>
+
+      <!-- ENGINEERING -->
+      <div class="bento-card bento-card--eng">
+        <span class="bento-discipline">Engineering</span>
+        <ul class="bento-points">
+          <li>
+            <strong>Heat Transfer</strong>
+            Thermal energy moves from the stove to the mixture during the cooking phase.
+          </li>
+          <li>
+            <strong>Rheology &amp; Viscosity</strong>
+            Mechanical blending creates a uniform puree, with viscosity increasing as the mixture thickens and water evaporates.
+          </li>
+          <li>
+            <strong>Phase Change</strong>
+            Controlled cooling transitions the solution from a liquid state into a cohesive semi-solid gel.
+          </li>
+        </ul>
       </div>
-      <div class="stem-card stem-card--cs">
-        <span class="stem-label">Computer Science</span>
-        <p>Develop an interactive website showcasing materials, marketing/promotional content, and identifying optimal recipe sorting algorithms.</p>
+
+      <!-- MATHEMATICS -->
+      <div class="bento-card bento-card--math">
+        <span class="bento-discipline">Mathematics</span>
+        <ul class="bento-points">
+          <li>
+            <strong>Ratio Calculations</strong>
+            Precise measurement ratios of sugar, citric acid, and gelatin relative to fruit mass to ensure optimal gelling, taste balance, and shelf-life prediction.
+          </li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- ───── SECTION 04: TOOLS, INGREDIENTS & METHODOLOGY ───── -->
+  <!-- ───── SECTION D: TOOLS, INGREDIENTS & METHODOLOGY ───── -->
   <section id="methodology" class="section reveal">
     <h2>Tools, Ingredients &amp; Methodology</h2>
 
-    <!-- Subsection A: Tools -->
-    <div class="method-subsection">
-      <h3 class="method-subtitle">Tools Required</h3>
-      <div class="tools-grid">
-        <div class="tool-chip">Spoon &amp; Spatula</div>
-        <div class="tool-chip">Container</div>
-        <div class="tool-chip">Rectangular Metal Mold</div>
-        <div class="tool-chip">Knife</div>
-        <div class="tool-chip">Steamer</div>
-        <div class="tool-chip">Blender</div>
-        <div class="tool-chip">Pot</div>
-      </div>
-    </div>
-
-    <!-- Subsection B: Ingredients -->
-    <div class="method-subsection">
-      <h3 class="method-subtitle">Ingredients (Base Batch = 100g Fruit)</h3>
-      <div class="ingredients-table-wrap">
-        <table class="ingredients-table" id="ingredients-table">
+    <!-- Equipment Table -->
+    <div class="method-block">
+      <h3 class="method-heading">Table 1 — Equipment</h3>
+      <div class="data-table-wrap">
+        <table class="data-table">
           <thead>
             <tr>
-              <th>Ingredient</th>
-              <th>Amount</th>
-              <th>Notes</th>
+              <th>No.</th>
+              <th>Equipment</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td><strong>Dragon Fruit</strong></td>
-              <td>100g total</td>
-              <td>Skin : Flesh = 1 : 1 ratio (50g each)</td>
-            </tr>
-            <tr>
-              <td><strong>Gelatin</strong></td>
-              <td>100g</td>
-              <td>Primary gelling agent</td>
-            </tr>
-            <tr>
-              <td><strong>Granulated Sugar</strong></td>
-              <td>380g</td>
-              <td>Sweetener &amp; preservative</td>
-            </tr>
-            <tr>
-              <td><strong>Cornstarch</strong></td>
-              <td>½ tsp</td>
-              <td>Thickening stabilizer</td>
-            </tr>
-            <tr>
-              <td><strong>Citric Acid</strong></td>
-              <td>½ tsp</td>
-              <td>pH regulator for gel setting</td>
-            </tr>
+            <tr><td>1</td><td>Spoon and spatula</td></tr>
+            <tr><td>2</td><td>Container</td></tr>
+            <tr><td>3</td><td>Rectangular metal mold</td></tr>
+            <tr><td>4</td><td>Knife</td></tr>
+            <tr><td>5</td><td>Steamer</td></tr>
+            <tr><td>6</td><td>Blender</td></tr>
+            <tr><td>7</td><td>Pot</td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <!-- Subsection C: Step-by-Step Methodology -->
-    <div class="method-subsection">
-      <h3 class="method-subtitle">Step-by-Step Methodology</h3>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-marker">1</div>
-          <div class="timeline-content">
-            <h4>Cutting</h4>
-            <p>Cut dragon fruit and carefully separate the flesh from the skin.</p>
+    <!-- Ingredients Table -->
+    <div class="method-block">
+      <h3 class="method-heading">Table 2 — Ingredients</h3>
+      <div class="data-table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Ingredient</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Dragon fruit</strong></td><td>Skin : Flesh ratio = 1 : 1</td></tr>
+            <tr><td><strong>Gelatin</strong></td><td>100 gram</td></tr>
+            <tr><td><strong>Sugar</strong></td><td>380 gram</td></tr>
+            <tr><td><strong>Cornstarch</strong></td><td>½ teaspoon</td></tr>
+            <tr><td><strong>Citric acid</strong></td><td>½ teaspoon</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Step-by-Step Flowchart -->
+    <div class="method-block">
+      <h3 class="method-heading">Table 3 — Step-by-Step Methodology</h3>
+      <div class="flowchart">
+        <div class="flow-step">
+          <div class="flow-number">1</div>
+          <div class="flow-card">
+            <h4>Preparation</h4>
+            <p>Thoroughly wash the dragon fruit. Separate the pink skin and the red flesh, ensuring a 1:1 ratio by weight. Clean the outer skin of any rough scales or blemishes.</p>
           </div>
+          <div class="flow-connector">⤵</div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-marker">2</div>
-          <div class="timeline-content">
-            <h4>Peel Cleaning</h4>
-            <p>Remove all green scales and bracts from the outer skin surface.</p>
+        <div class="flow-step">
+          <div class="flow-number">2</div>
+          <div class="flow-card">
+            <h4>Steaming the Skin</h4>
+            <p>Place the dragon fruit skin into the steamer. Steam until the skin is softened. This helps reduce bitterness and soften the tough outer layer.</p>
           </div>
+          <div class="flow-connector">⤵</div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-marker">3</div>
-          <div class="timeline-content">
-            <h4>Steaming</h4>
-            <p>Steam the cleaned dragon fruit skin for approximately 10 minutes to soften.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-marker">4</div>
-          <div class="timeline-content">
+        <div class="flow-step">
+          <div class="flow-number">3</div>
+          <div class="flow-card">
             <h4>Blending</h4>
-            <p>Blend the steamed skin together with the flesh at a 1:1 ratio until smooth.</p>
+            <p>Transfer the softened skin and fresh dragon fruit flesh into the blender. Blend until completely smooth and uniform.</p>
           </div>
+          <div class="flow-connector">⤵</div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-marker">5</div>
-          <div class="timeline-content">
-            <h4>Cooking</h4>
-            <p>Cook blended mixture in a pot. Add 380g sugar, 100g gelatin, ½ tsp cornstarch, and ½ tsp citric acid. Stir continuously until thickened.</p>
+        <div class="flow-step">
+          <div class="flow-number">4</div>
+          <div class="flow-card">
+            <h4>Combining Ingredients</h4>
+            <p>Pour the blended mixture into the pot. Add 100g gelatin, 380g sugar, ½ teaspoon cornstarch, and ½ teaspoon citric acid. Mix thoroughly using a spoon or spatula.</p>
           </div>
+          <div class="flow-connector">⤵</div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-marker">6</div>
-          <div class="timeline-content">
+        <div class="flow-step">
+          <div class="flow-number">5</div>
+          <div class="flow-card">
+            <h4>Cooking and Dissolving</h4>
+            <p>Heat over low-to-medium heat. Stir continuously to prevent burning and ensure the gelatin and sugar fully dissolve into a smooth, thick liquid.</p>
+          </div>
+          <div class="flow-connector">⤵</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-number">6</div>
+          <div class="flow-card">
             <h4>Molding</h4>
-            <p>Pour the thickened mixture into a rectangular metal mold evenly.</p>
+            <p>Pour the hot mixture evenly into a rectangular metal mold or any preferred container.</p>
           </div>
+          <div class="flow-connector">⤵</div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-marker">7</div>
-          <div class="timeline-content">
-            <h4>Cooling &amp; Setting</h4>
-            <p>Refrigerate the mold overnight until the jelly is fully set and hardened.</p>
+        <div class="flow-step">
+          <div class="flow-number">7</div>
+          <div class="flow-card">
+            <h4>Setting</h4>
+            <p>Let it cool at room temperature, then refrigerate until completely firm and set.</p>
           </div>
+          <div class="flow-connector">⤵</div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-marker">8</div>
-          <div class="timeline-content">
-            <h4>Finishing</h4>
-            <p>Unmold the jelly and coat the entire surface with granulated sugar for texture and presentation.</p>
+        <div class="flow-step">
+          <div class="flow-number">8</div>
+          <div class="flow-card">
+            <h4>Cutting and Finishing</h4>
+            <p>Remove from the mold and place on a clean surface. Use a knife to cut into neat cubes or rectangular pieces.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ───── SECTION 05: BATCH & INGREDIENT CALCULATOR ───── -->
-  <section id="calculator" class="section reveal">
-    <h2>Batch &amp; Ingredient Calculator</h2>
-    <p class="section-intro">Scale your recipe based on available dragon fruit. All values auto-calculate from the base batch ratio.</p>
+  <!-- ───── SECTION E: BUDGET BREAKDOWN ───── -->
+  <section id="budget" class="section reveal">
+    <h2>Budget Breakdown</h2>
+    <p class="section-sub">Pengeluaran CSP Group 20:</p>
 
-    <div class="calc-container">
-      <div class="calc-input-group">
-        <label for="fruit-input" class="calc-label">Total Dragon Fruit Available</label>
-        <div class="calc-input-row">
-          <input type="number" id="fruit-input" class="calc-number-input" value="100" min="1" max="10000" step="1">
-          <span class="calc-unit">grams</span>
-        </div>
-        <input type="range" id="fruit-slider" class="calc-slider" min="1" max="2000" value="100" step="1">
-        <div class="calc-slider-labels">
-          <span>1g</span>
-          <span>500g</span>
-          <span>1000g</span>
-          <span>1500g</span>
-          <span>2000g</span>
-        </div>
-      </div>
-
-      <div class="calc-results">
-        <div class="calc-card">
-          <span class="calc-card-label">Dragon Fruit Skin</span>
-          <span class="calc-card-value" id="calc-skin">50</span>
-          <span class="calc-card-unit">grams</span>
-        </div>
-        <div class="calc-card">
-          <span class="calc-card-label">Dragon Fruit Flesh</span>
-          <span class="calc-card-value" id="calc-flesh">50</span>
-          <span class="calc-card-unit">grams</span>
-        </div>
-        <div class="calc-card">
-          <span class="calc-card-label">Gelatin</span>
-          <span class="calc-card-value" id="calc-gelatin">100</span>
-          <span class="calc-card-unit">grams</span>
-        </div>
-        <div class="calc-card">
-          <span class="calc-card-label">Granulated Sugar</span>
-          <span class="calc-card-value" id="calc-sugar">380</span>
-          <span class="calc-card-unit">grams</span>
-        </div>
-        <div class="calc-card">
-          <span class="calc-card-label">Cornstarch</span>
-          <span class="calc-card-value" id="calc-cornstarch">0.50</span>
-          <span class="calc-card-unit">tsp</span>
-        </div>
-        <div class="calc-card">
-          <span class="calc-card-label">Citric Acid</span>
-          <span class="calc-card-value" id="calc-citric">0.50</span>
-          <span class="calc-card-unit">tsp</span>
-        </div>
-      </div>
+    <div class="budget-table-wrap">
+      <table class="budget-table">
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Nama Barang</th>
+            <th>Frek.</th>
+            <th>Vol.</th>
+            <th>Satuan</th>
+            <th>Harga</th>
+            <th>Sub total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Gelatin Sapi</td>
+            <td>1</td>
+            <td>1</td>
+            <td>gram</td>
+            <td>Rp58,000</td>
+            <td>Rp58,000</td>
+          </tr>
+          <tr class="sub-row">
+            <td></td>
+            <td colspan="5">ONGKIR (Gelatin)</td>
+            <td>Rp37,628</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Citric Acid</td>
+            <td>1</td>
+            <td>1</td>
+            <td>gram</td>
+            <td>Rp6,000</td>
+            <td>Rp6,000</td>
+          </tr>
+          <tr class="sub-row">
+            <td></td>
+            <td colspan="5">ONGKIR (Citric Acid)</td>
+            <td>Rp27,572</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Buah Naga</td>
+            <td>1</td>
+            <td>1</td>
+            <td>kilogram</td>
+            <td>-</td>
+            <td>Rp0</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Gula</td>
+            <td>1</td>
+            <td>1</td>
+            <td>pack</td>
+            <td>-</td>
+            <td>Rp0</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Maizena</td>
+            <td>1</td>
+            <td>1</td>
+            <td>pack</td>
+            <td>-</td>
+            <td>Rp0</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="6">Total Pengeluaran CSP</td>
+            <td>Rp71,200</td>
+          </tr>
+        </tfoot>
+      </table>
     </div>
   </section>
 
-  <!-- ───── SECTION 06: EXPERIMENTAL RESULTS ───── -->
-  <section id="results" class="section reveal">
-    <div class="results-header">
-      <div>
-        <h2>Experimental Results &amp; Recipe Finder</h2>
-        <p class="section-intro">Ranked by optimal score — successful set + highest texture score wins.</p>
+  <!-- ───── SECTION F: REFERENCES & VIDEO DEMONSTRATION ───── -->
+  <section id="references" class="section reveal">
+    <h2>References &amp; Video Demonstration</h2>
+
+    <div class="ref-grid">
+      <div class="ref-card">
+        <h3>Literature Reference</h3>
+        <p class="ref-title">Pemanfaatan Kulit Buah Naga Menjadi Permen Jelly Kering</p>
+        <a href="https://www.researchgate.net/publication/337577325_PEMANFAATAN_KULIT_BUAH_NAGA_MENJADI_PERMEN_JELLY_KERING" target="_blank" rel="noopener noreferrer" class="ref-link">View on ResearchGate →</a>
       </div>
-      <div class="sort-control">
-        <label for="sort-select">Sort by:</label>
-        <select id="sort-select">
-          <option value="optimal">Optimal Score</option>
-          <option value="suhu">Temperature (low → high)</option>
-          <option value="waktu">Time (fast → slow)</option>
-          <option value="tekstur">Texture Score</option>
-        </select>
+
+      <div class="video-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+          title="Pemanfaatan Kulit dan Daging Buah Naga Menjadi Permen Jelly Kering"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
       </div>
     </div>
-    <div id="percobaan-list"></div>
   </section>
 
 </main>
@@ -329,8 +401,8 @@
 <footer>
   <div class="footer-inner">
     <span class="footer-brand">PitaJell</span>
-    <p>IBDP Collaborative Sciences Project — SMA Pradita Dirgantara</p>
-    <p class="footer-copy">&copy; 2026 PitaJell</p>
+    <p>Collaborative Sciences Project — SMA Pradita Dirgantara</p>
+    <p class="mono">&copy; 2026 CSP Group 20</p>
   </div>
 </footer>
 
