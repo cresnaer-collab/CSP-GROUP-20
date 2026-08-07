@@ -170,7 +170,7 @@ function renderPercobaan(data, container) {
   container.innerHTML = data.map(p => `
     <div class="percobaan-card ${p.optimal ? "optimal" : ""}">
       ${p.optimal
-        ? `<div class="badge">✦ Most Optimal Recipe</div>`
+        ? `<div class="badge">Most Optimal Recipe</div>`
         : (!p.berhasil_set ? `<div class="badge badge-fail">Did Not Set</div>` : "")
       }
       <h3>${escapeHtml(p.nama)}</h3>

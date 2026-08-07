@@ -115,11 +115,6 @@ body {
   gap: 8px;
 }
 
-.nav-brand::before {
-  content: '✦';
-  font-size: 18px;
-  color: var(--secondary-rose);
-}
 
 .nav-links {
   display: flex;
@@ -230,14 +225,6 @@ body {
   border-radius: var(--radius-full);
   margin-bottom: 20px;
   border: 1px solid rgba(184, 15, 80, 0.12);
-}
-
-.hero-badge-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--primary-magenta);
-  box-shadow: 0 0 8px var(--primary-magenta);
 }
 
 .hero-text h1 {
@@ -371,16 +358,6 @@ body {
   padding-top: 100px;
 }
 
-.section-number {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--secondary-rose);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  display: inline-block;
-  margin-bottom: 8px;
-}
 
 .section h2 {
   font-family: var(--font-heading);
@@ -455,11 +432,6 @@ body {
   border-color: var(--surface-border-hover);
 }
 
-.content-card-icon {
-  font-size: 32px;
-  margin-bottom: 16px;
-}
-
 .content-card h3 {
   font-size: 18px;
   font-weight: 700;
@@ -521,11 +493,6 @@ body {
   box-shadow: var(--shadow-hover);
 }
 
-.stem-icon {
-  font-size: 36px;
-  margin-bottom: 12px;
-}
-
 .stem-label {
   display: block;
   font-family: var(--font-mono);
@@ -555,11 +522,6 @@ body {
   margin-bottom: 20px;
   display: flex;
   align-items: center;
-  gap: 10px;
-}
-
-.method-subtitle-icon {
-  font-size: 22px;
 }
 
 /* Tools Chips */
@@ -572,7 +534,6 @@ body {
 .tool-chip {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
   background: var(--surface-white);
   border: 1px solid var(--surface-border);
   border-radius: var(--radius-full);
@@ -588,10 +549,6 @@ body {
   border-color: var(--secondary-rose);
   background: var(--rose-light);
   transform: translateY(-2px);
-}
-
-.tool-emoji {
-  font-size: 18px;
 }
 
 /* Ingredients Table */
@@ -802,12 +759,6 @@ body {
 .calc-card:hover {
   transform: translateY(-3px);
   border-color: var(--secondary-rose);
-}
-
-.calc-card-icon {
-  font-size: 28px;
-  display: block;
-  margin-bottom: 8px;
 }
 
 .calc-card-label {
