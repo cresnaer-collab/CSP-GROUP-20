@@ -1,8 +1,7 @@
 import json
 import os
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, request
 
-# Gunakan standar Flask (otomatis membaca folder templates/ dan static/)
 app = Flask(__name__)
 
 DATA_PATH = os.path.join(os.path.dirname(__file__), "percobaan.json")
@@ -15,7 +14,6 @@ def load_percobaan():
 
 @app.route("/")
 def index():
-    # Mengambil index.html dari dalam folder templates/
     return render_template("index.html")
 
 
@@ -23,10 +21,12 @@ def index():
 def get_percobaan():
     data = load_percobaan()
 
+    # Calculate optimal score for each batch
     for p in data:
         skor = (50 if p["berhasil_set"] else 0) + (p["skor_tekstur"] * 10)
         p["skor_optimal"] = skor
 
+    # Sort: primary = highest optimal score, secondary = lowest temp, tertiary = shortest time
     data.sort(key=lambda p: (-p["skor_optimal"], p["suhu_c"], p["waktu_menit"]))
 
     for i, p in enumerate(data):
