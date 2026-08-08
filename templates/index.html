@@ -23,9 +23,8 @@
   <a href="#hero" class="nav-brand">PitaJell</a>
   <div class="nav-links" id="nav-links">
     <a href="#background">Background</a>
-    <a href="#contents">Contents</a>
+    <a href="#contents">Contents &amp; Health Benefits</a>
     <a href="#stem">Academic Focus</a>
-    <a href="#bioactive">Bioactive Benefits</a>
     <a href="#equipment-ingredients">Equipment &amp; Ingredients</a>
     <a href="#methodology">Methodology</a>
     <a href="#budget">Budget</a>
@@ -72,26 +71,34 @@
     </div>
   </section>
 
-  <!-- ───── SECTION B: CONTENTS OF A DRAGON FRUIT ───── -->
+  <!-- ───── SECTION B: CONTENTS OF A DRAGON FRUIT & HEALTH BENEFITS ───── -->
   <section id="contents" class="section reveal">
-    <h2>Contents of a Dragon Fruit</h2>
-    <p class="section-sub">The Dragon fruit (<em>Hylocereus spp.</em>) has lots of nutritious and beneficial components that are rich in various bioactive phytochemical compounds:</p>
+    <h2>Contents of a Dragon Fruit &amp; Health Benefits</h2>
+    <p class="section-sub">The Dragon fruit (<em>Hylocereus spp.</em>) has lots of nutritious components rich in bioactive phytochemical compounds and health benefits:</p>
 
-    <div class="content-grid">
-      <div class="content-card">
-        <h3>Phenolic Acids &amp; Flavonoids</h3>
-        <p>Active antioxidants helping eliminate free radicals and protect cellular structures.</p>
-
-      </div>
-      <div class="content-card">
+    <div class="bioactive-grid">
+      <!-- 1. Betalains -->
+      <div class="bioactive-card">
         <h3>Betalains</h3>
-        <p>Natural red-violet pigments responsible for vibrant color and active anti-inflammatory activity.</p>
-    
+        <p class="compound-desc">Natural red-violet pigments responsible for vibrant color, providing cellular protection and active anti-inflammatory support.</p>
       </div>
-      <div class="content-card">
-        <h3>Anthocyanins</h3>
-        <p>Water-soluble pigments with demonstrated antimicrobial properties.</p>
 
+      <!-- 2. Flavonoids -->
+      <div class="bioactive-card">
+        <h3>Flavonoids</h3>
+        <p class="compound-desc">Active antioxidants and secondary plant metabolites that scavenge free radicals and support vascular cell health.</p>
+      </div>
+
+      <!-- 3. Phenolic Acids -->
+      <div class="bioactive-card">
+        <h3>Phenolic Acids</h3>
+        <p class="compound-desc">Potent beneficial compounds present in fruit peel fiber that help neutralize reactive oxygen species and boost immunity.</p>
+      </div>
+
+      <!-- 4. Anthocyanins -->
+      <div class="bioactive-card">
+        <h3>Anthocyanins</h3>
+        <p class="compound-desc">Water-soluble plant pigments with demonstrated antimicrobial properties, supporting overall immunity and wellness.</p>
       </div>
     </div>
   </section>
@@ -155,42 +162,6 @@
             <p>Develop an interactive and informative website showcasing the content &amp; materials of the jelly, the process of making it, the measurement and amount, and even how the jelly would benefit one's health and lifestyle.</p>
           </div>
         </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ───── SECTION D: BIOACTIVE & ANTIOXIDANT HEALTH BENEFITS ───── -->
-  <section id="bioactive" class="section reveal">
-    <h2>Health Benefits</h2>
-    <p class="section-sub">Key phytochemical compounds found in dragon fruit and their health impact:</p>
-
-    <div class="bioactive-grid">
-      <!-- Betalains -->
-      <div class="bioactive-card">
-        <span class="compound-name">Betalains</span>
-
-        <p class="compound-desc">Nitrogen-containing water-soluble pigments responsible for the deep pink-violet hue of pitaya. Provide strong cellular protection and inflammation support.</p>
-      </div>
-
-      <!-- Flavonoids -->
-      <div class="bioactive-card">
-        <span class="compound-name">Flavonoids</span>
-
-        <p class="compound-desc">Secondary plant metabolites that scavenge free radicals and support vascular cell health. Excellent for cellular defense and radical neutralization.</p>
-      </div>
-
-      <!-- Phenolic Acids -->
-      <div class="bioactive-card">
-        <span class="compound-name">Phenolic Acids</span>
-
-        <p class="compound-desc">Potent hydroxylated compounds present in peel fiber that neutralize reactive oxygen species. Support oxidative balance and immunity boosting.</p>
-      </div>
-
-      <!-- Anthocyanins -->
-      <div class="bioactive-card">
-        <span class="compound-name">Anthocyanins</span>
-
-        <p class="compound-desc">Vibrant plant pigments demonstrating natural antimicrobial and immunomodulatory activity. Active in microbial defense and immunity support.</p>
       </div>
     </div>
   </section>
@@ -403,8 +374,8 @@
             <td>1</td>
             <td>1</td>
             <td>pack</td>
-            <td><span class="free-badge">Rp0</span></td>
-            <td><span class="free-badge">Rp0</span></td>
+            <td>Rp0</td>
+            <td>Rp0</td>
           </tr>
           <tr>
             <td>5</td>
@@ -412,8 +383,8 @@
             <td>1</td>
             <td>1</td>
             <td>pack</td>
-            <td><span class="free-badge">Rp0</span></td>
-            <td><span class="free-badge">Rp0</span></td>
+            <td>Rp0</td>
+            <td>Rp0</td>
           </tr>
           <tr class="shipping-row">
             <td>6</td>
@@ -464,12 +435,8 @@
   </div>
 </footer>
 
-
-
-
 <!-- External Script -->
 <script src="{{ url_for('static', filename='script.js') }}"></script>
 
 </body>
 </html>
-
