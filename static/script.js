@@ -1,12 +1,14 @@
 /* ==========================================================================
    PITAJELL — Frontend Interaction Logic
-   Active navbar tracking, reveal animations, mascot animation sequencing
+   Active navbar tracking, reveal animations, mascot infinite animation loop,
+   and bioactive health showcase interactions.
    ========================================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
   initNav();
   initRevealAnimations();
   initMascotAnimation();
+  initBioactiveShowcase();
 });
 
 /* ─── 1. STICKY NAV, SCROLL TRACKING & MOBILE MENU ─── */
@@ -79,18 +81,81 @@ function initRevealAnimations() {
   reveals.forEach(el => revealObserver.observe(el));
 }
 
-/* ─── 3. MASCOT DUAL-STAGE ANIMATION SEQUENCER ─── */
+/* ─── 3. MASCOT DUAL-STAGE & TYPEWRITER INFINITE ANIMATION SEQUENCER ─── */
 function initMascotAnimation() {
-  const mascotWrap = document.querySelector(".mascot-wrap");
-  if (!mascotWrap) return;
+  const mascotWrap = document.getElementById("mascot-wrap");
+  const speechBubble = document.getElementById("speech-bubble");
+  const typewriterText = document.getElementById("typewriter-text");
+  if (!mascotWrap || !speechBubble || !typewriterText) return;
 
-  // Listen for the fly-in animation to end, then switch to floating
-  mascotWrap.addEventListener("animationend", (e) => {
-    if (e.animationName === "flyInRight") {
-      // Small delay to ensure smooth transition between stages
-      requestAnimationFrame(() => {
-        mascotWrap.classList.add("floating");
-      });
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reducedMotion) {
+    mascotWrap.classList.add("floating");
+    speechBubble.classList.add("visible");
+    typewriterText.textContent = "H E L L O ! !";
+    return;
+  }
+
+  const message = "H E L L O ! !";
+
+  function typeText(callback) {
+    typewriterText.textContent = "";
+    let charIndex = 0;
+    speechBubble.classList.add("visible");
+
+    function typeChar() {
+      if (charIndex < message.length) {
+        typewriterText.textContent += message.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeChar, 80);
+      } else if (callback) {
+        callback();
+      }
     }
+
+    typeChar();
+  }
+
+  function startSequence() {
+    // 1. Entrance: Mascot enters from off-screen right
+    mascotWrap.className = "mascot-wrap entering";
+
+    setTimeout(() => {
+      // 2. Ambient Floating once stationed
+      mascotWrap.className = "mascot-wrap floating";
+
+      // 3. Typewriter: Reveal speech bubble and type text
+      typeText(() => {
+        // 4. Pause: Mascot continues floating for exactly 7 seconds
+        setTimeout(() => {
+          // 5. Exit: Hide bubble and fly off-screen left
+          speechBubble.classList.remove("visible");
+          mascotWrap.className = "mascot-wrap exiting";
+
+          setTimeout(() => {
+            // 6. Reset: Instantly reset to off-screen right without transition
+            mascotWrap.className = "mascot-wrap resetting";
+            setTimeout(() => {
+              startSequence();
+            }, 50);
+          }, 1200); // match exit transition duration
+        }, 7000); // 7 seconds pause
+      });
+    }, 1200); // match entrance transition duration
+  }
+
+  startSequence();
+}
+
+/* ─── 4. BIOACTIVE HEALTH SHOWCASE WIDGET INTERACTION ─── */
+function initBioactiveShowcase() {
+  const cards = document.querySelectorAll(".bioactive-card");
+  if (!cards.length) return;
+
+  cards.forEach(card => {
+    card.addEventListener("click", () => {
+      cards.forEach(c => c.classList.remove("active"));
+      card.classList.add("active");
+    });
   });
 }
