@@ -517,15 +517,15 @@ img { display: block; max-width: 100%; }
   line-height: 1.7;
 }
 
-/* Bioactive Health Showcase Widget */
+/* Bioactive Compounds — Clean Glassmorphic Cards */
 .bioactive-showcase {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(184, 15, 80, 0.15);
+  border: 1px solid rgba(184, 15, 80, 0.12);
   border-radius: var(--r-lg);
-  padding: 32px;
-  box-shadow: 0 16px 40px rgba(184, 15, 80, 0.08);
+  padding: 36px;
+  box-shadow: 0 8px 28px rgba(184, 15, 80, 0.06);
   margin-top: 24px;
 }
 
@@ -533,7 +533,7 @@ img { display: block; max-width: 100%; }
   margin-bottom: 24px;
 }
 .showcase-header h3 {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 800;
   color: var(--primary-dark);
   margin-bottom: 4px;
@@ -547,31 +547,23 @@ img { display: block; max-width: 100%; }
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
-  margin-bottom: 28px;
 }
 
 .bioactive-card {
   background: var(--surface);
-  border: 1.5px solid var(--border);
+  border: 1px solid var(--border);
   border-radius: var(--r-md);
-  padding: 20px;
-  cursor: pointer;
-  transition: all 0.2s var(--ease);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
 }
-.bioactive-card:hover,
-.bioactive-card.active {
-  border-color: var(--primary);
-  background: var(--primary-pale);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
+.bioactive-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-sm);
 }
 
-.compound-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-}
 .compound-name {
   font-size: 16px;
   font-weight: 700;
@@ -582,130 +574,17 @@ img { display: block; max-width: 100%; }
   font-size: 11px;
   font-weight: 600;
   color: var(--primary);
-  background: rgba(184, 15, 80, 0.08);
+  background: rgba(184, 15, 80, 0.06);
   padding: 3px 10px;
   border-radius: var(--r-full);
+  align-self: flex-start;
 }
 
 .compound-desc {
   font-size: 13.5px;
   color: var(--text-muted);
-  line-height: 1.5;
-  margin-bottom: 14px;
-}
-
-.impact-metrics {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-.metric-chip {
-  display: flex;
-  flex-direction: column;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  padding: 6px 10px;
-  border-radius: var(--r-sm);
-  font-size: 11.5px;
-}
-.metric-label {
-  font-size: 10px;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-.metric-value {
-  font-family: var(--font-mono);
-  font-weight: 700;
-  color: var(--primary);
-}
-
-/* Calculator Widget */
-.calc-widget {
-  border-top: 1px solid var(--border);
-  padding-top: 24px;
-}
-.calc-widget-header {
-  margin-bottom: 20px;
-}
-.calc-widget-header h4 {
-  font-size: 18px;
-  font-weight: 800;
-  color: var(--text-dark);
-  margin-bottom: 4px;
-}
-.calc-widget-header p {
-  font-size: 13.5px;
-  color: var(--text-muted);
-}
-
-.calc-input-group {
-  margin-bottom: 20px;
-}
-.calc-input-group label {
-  display: block;
-  font-size: 13.5px;
-  font-weight: 600;
-  color: var(--text-dark);
-  margin-bottom: 8px;
-}
-.input-with-unit {
-  display: inline-flex;
-  align-items: center;
-  background: var(--bg-color);
-  border: 1.5px solid var(--border-hover);
-  border-radius: var(--r-md);
-  padding: 4px 14px;
-  transition: border-color 0.2s;
-}
-.input-with-unit:focus-within {
-  border-color: var(--primary);
-}
-.input-with-unit input {
-  border: none;
-  background: transparent;
-  font-family: var(--font-mono);
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--primary);
-  width: 120px;
-  outline: none;
-}
-.input-with-unit .unit {
-  font-family: var(--font-mono);
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-muted);
-}
-
-.calc-results-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-.calc-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--r-md);
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-}
-.calc-card--highlight {
-  background: var(--primary-pale);
-  border-color: rgba(184, 15, 80, 0.2);
-}
-.calc-label {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-muted);
-  margin-bottom: 6px;
-}
-.calc-val {
-  font-family: var(--font-mono);
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--primary-deep);
+  line-height: 1.6;
+  margin-top: 4px;
 }
 
 /* =============================================================================
@@ -806,23 +685,22 @@ img { display: block; max-width: 100%; }
 /* Custom UI Badges */
 .ratio-badge {
   display: inline-block;
-  background: rgba(184, 15, 80, 0.1);
-  color: #B80F50;
-  font-weight: 700;
-  border-radius: 999px;
-  padding: 6px 14px;
+  background: rgba(184, 15, 80, 0.08);
+  color: var(--primary);
+  font-weight: 600;
+  border-radius: 4px;
+  padding: 2px 8px;
   font-family: var(--font-mono);
-  border: 1px solid rgba(184, 15, 80, 0.2);
-  font-size: 12.5px;
+  font-size: 13px;
 }
 
 .free-badge {
   display: inline-block;
-  color: #059669;
-  background: #D1FAE5;
+  color: var(--primary-deep);
+  background: rgba(184, 15, 80, 0.06);
   font-weight: 600;
   padding: 4px 10px;
-  border-radius: 999px;
+  border-radius: 6px;
   font-size: 12px;
   font-family: var(--font-mono);
 }
@@ -1039,7 +917,6 @@ footer .mono { font-family: var(--font-mono); font-size: 12px; margin-top: 14px;
   .discipline-grid { grid-template-columns: 1fr; gap: 32px; }
   .equip-ing-grid { grid-template-columns: 1fr; }
   .bioactive-grid { grid-template-columns: 1fr; }
-  .calc-results-grid { grid-template-columns: repeat(2, 1fr); }
   .content-grid { grid-template-columns: repeat(2, 1fr); }
   .ref-grid { grid-template-columns: 1fr; }
 }
@@ -1089,7 +966,7 @@ footer .mono { font-family: var(--font-mono); font-size: 12px; margin-top: 14px;
     bottom: -20px;
   }
 
-  .calc-results-grid { grid-template-columns: 1fr; }
+  .bioactive-showcase { padding: 24px 20px; }
 
   .data-table th, .budget-table th,
   .data-table td, .budget-table td { padding: 12px 16px; font-size: 13.5px; }
