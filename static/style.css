@@ -1,13 +1,14 @@
 /* =============================================================================
    PITAJELL — Complete Stylesheet
    CSP Group 20 | SMA Pradita Dirgantara
-   Organic Modern Berry Theme — Refactored
+   Organic Modern Berry Theme — Refactored Luxury Edition
    ============================================================================= */
 
 /* ── DESIGN TOKENS ── */
 :root {
   --primary:        #B80F50;
   --primary-deep:   #8E0A3D;
+  --primary-dark:   #580827;
   --primary-light:  #E65C8A;
   --primary-pale:   #FDEBF1;
   --bg-color:       #FFF7F8;
@@ -22,12 +23,12 @@
   --font-mono:      'IBM Plex Mono', monospace;
   --r-sm:   8px;
   --r-md:  16px;
-  --r-lg:  24px;
+  --r-lg:  20px;
   --r-xl:  32px;
   --r-full: 9999px;
   --shadow-sm:   0 2px 8px  rgba(184,15,80,0.06);
   --shadow-md:   0 8px 28px rgba(184,15,80,0.10);
-  --shadow-lg:   0 18px 48px rgba(184,15,80,0.15);
+  --shadow-lg:   0 16px 40px rgba(184,15,80,0.12);
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -135,7 +136,6 @@ img { display: block; max-width: 100%; }
   overflow: hidden;
 }
 
-/* ambient bg orbs */
 .hero-bg-orb {
   position: absolute;
   border-radius: 50%;
@@ -272,15 +272,13 @@ img { display: block; max-width: 100%; }
   to   { opacity: 1; transform: scale(1)   translateY(0); }
 }
 
-/* Mascot wrap — Dual-Stage Sequential Animation */
+/* Mascot wrap */
 .mascot-wrap {
   position: relative;
   width: 340px;
-  /* Stage 1: Fly-in from right */
   animation: flyInRight 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* After fly-in completes, apply floating bob via class added by JS */
 .mascot-wrap.floating {
   animation: floatBob 4.5s ease-in-out infinite;
 }
@@ -290,24 +288,15 @@ img { display: block; max-width: 100%; }
   height: auto;
   max-height: 340px;
   object-fit: contain;
-  /* Seamless blending into blush background */
   mix-blend-mode: multiply;
   filter: contrast(1.05);
 }
 
-/* Stage 1: Fly-in Entry */
 @keyframes flyInRight {
-  from {
-    opacity: 0;
-    transform: translateX(200px) scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0) scale(1);
-  }
+  from { opacity: 0; transform: translateX(200px) scale(0.8); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
 }
 
-/* Stage 2: Gentle Floating */
 @keyframes floatBob {
   0%, 100% { transform: translateY(0); }
   50%      { transform: translateY(-14px); }
@@ -345,7 +334,6 @@ img { display: block; max-width: 100%; }
   line-height: 1.6;
 }
 
-/* Reveal on scroll */
 .reveal {
   opacity: 0;
   transform: translateY(22px);
@@ -418,13 +406,14 @@ img { display: block; max-width: 100%; }
 }
 
 /* =============================================================================
-   C: STEM BENTO GRID
+   C: ACADEMIC FOCUS (BENTO GRID & CALCULATOR)
    ============================================================================= */
 .bento-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   align-items: stretch;
+  margin-bottom: 36px;
 }
 
 .bento-card {
@@ -447,10 +436,10 @@ img { display: block; max-width: 100%; }
   width: 100%; height: 4px;
   border-radius: var(--r-lg) var(--r-lg) 0 0;
 }
-.bento-card--science::before  { background: linear-gradient(90deg, #B80F50, #E65C8A); }
-.bento-card--tech::before     { background: linear-gradient(90deg, #7C3AED, #A78BFA); }
-.bento-card--eng::before      { background: linear-gradient(90deg, #D97706, #F59E0B); }
-.bento-card--math::before     { background: linear-gradient(90deg, #059669, #34D399); }
+.bento-card--science::before { background: linear-gradient(90deg, #B80F50, #E65C8A); }
+.bento-card--chem::before    { background: linear-gradient(90deg, #7C3AED, #A78BFA); }
+.bento-card--eng::before     { background: linear-gradient(90deg, #D97706, #F59E0B); }
+.bento-card--cs::before      { background: linear-gradient(90deg, #059669, #34D399); }
 
 .bento-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
 
@@ -460,7 +449,7 @@ img { display: block; max-width: 100%; }
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -468,116 +457,252 @@ img { display: block; max-width: 100%; }
   border-radius: var(--r-full);
   align-self: flex-start;
 }
-.bento-icon {
-  display: inline-block;
-  vertical-align: middle;
-}
+.bento-icon { display: inline-block; vertical-align: middle; }
 
-.bento-card--science  .bento-discipline { color: var(--primary);  background: var(--primary-pale); }
-.bento-card--tech     .bento-discipline { color: #7C3AED;        background: #EDE9FE; }
-.bento-card--eng      .bento-discipline { color: #D97706;        background: #FEF3C7; }
-.bento-card--math     .bento-discipline { color: #059669;        background: #D1FAE5; }
+.bento-card--science .bento-discipline { color: var(--primary); background: var(--primary-pale); }
+.bento-card--chem    .bento-discipline { color: #7C3AED;       background: #EDE9FE; }
+.bento-card--eng     .bento-discipline { color: #D97706;       background: #FEF3C7; }
+.bento-card--cs      .bento-discipline { color: #059669;       background: #D1FAE5; }
 
-.bento-points {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  flex-grow: 1;
-}
-.bento-points li {
+.bento-card-body p {
   font-size: 14.5px;
   color: var(--text-muted);
-  line-height: 1.55;
-  padding-left: 14px;
-  position: relative;
+  line-height: 1.65;
+  flex-grow: 1;
 }
-.bento-points li::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 8px;
-  width: 5px; height: 5px;
-  border-radius: 50%;
-  background: var(--primary-light);
-}
-.bento-card--tech .bento-points li::before { background: #A78BFA; }
-.bento-card--eng  .bento-points li::before { background: #F59E0B; }
-.bento-card--math .bento-points li::before { background: #34D399; }
 
-.bento-points strong {
+/* Calculator Widget */
+.calc-widget {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(184, 15, 80, 0.15);
+  border-radius: var(--r-lg);
+  padding: 32px;
+  box-shadow: 0 16px 40px rgba(184, 15, 80, 0.08);
+  margin-top: 16px;
+}
+.calc-widget-header {
+  margin-bottom: 24px;
+}
+.calc-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #059669;
+  background: #D1FAE5;
+  padding: 4px 10px;
+  border-radius: var(--r-full);
+  display: inline-block;
+  margin-bottom: 8px;
+}
+.calc-widget-header h4 {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+.calc-widget-header p {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.calc-input-group {
+  margin-bottom: 24px;
+}
+.calc-input-group label {
   display: block;
-  font-size: 13.5px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 600;
   color: var(--text-dark);
-  margin-bottom: 2px;
+  margin-bottom: 8px;
+}
+.input-with-unit {
+  display: inline-flex;
+  align-items: center;
+  background: var(--bg-color);
+  border: 1.5px solid var(--border-hover);
+  border-radius: var(--r-md);
+  padding: 4px 14px;
+  transition: border-color 0.2s;
+}
+.input-with-unit:focus-within {
+  border-color: var(--primary);
+}
+.input-with-unit input {
+  border: none;
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary);
+  width: 120px;
+  outline: none;
+}
+.input-with-unit .unit {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
 }
 
-/* =============================================================================
-   D: METHODOLOGY — Tables & Flowchart
-   ============================================================================= */
-.method-block { margin-bottom: 52px; }
-
-.method-heading {
-  font-size: 19px;
-  font-weight: 700;
-  color: var(--text-dark);
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--border);
+.calc-results-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
 }
-
-/* Data Tables (Equipment & Ingredients) */
-.data-table-wrap {
+.calc-card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--r-md);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+.calc-card--highlight {
+  background: var(--primary-pale);
+  border-color: rgba(184, 15, 80, 0.2);
+}
+.calc-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+.calc-val {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--primary-deep);
 }
 
-.data-table {
+/* =============================================================================
+   D: EQUIPMENT & INGREDIENTS (BESPOKE LUXURY TABLE UI)
+   ============================================================================= */
+.equip-ing-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.method-block { margin-bottom: 24px; }
+
+.method-heading {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Glassmorphic Luxury Table Wrap */
+.data-table-wrap,
+.budget-table-wrap {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1px solid rgba(184, 15, 80, 0.12);
+  box-shadow: 0 16px 40px rgba(184, 15, 80, 0.07);
+  overflow: hidden;
+}
+
+/* Table Elements */
+.data-table,
+.budget-table {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
   font-size: 14.5px;
 }
-.data-table th {
-  background: var(--primary-pale);
-  color: var(--primary);
-  font-family: var(--font-sans);
-  font-weight: 700;
-  padding: 13px 20px;
-  border-bottom: 1px solid var(--border);
-}
-.data-table td {
-  padding: 12px 20px;
-  color: var(--text-muted);
-  border-bottom: 1px solid var(--border);
-  transition: background 0.15s ease;
-}
-.data-table tr:last-child td { border-bottom: none; }
-.data-table tr:hover td { background: #FFF0F4; }
-.data-table td:first-child { font-weight: 600; color: var(--text-dark); }
-.data-table td strong { color: var(--text-dark); font-weight: 600; }
 
-/* Ingredients Pill Badge */
+.data-table thead,
+.budget-table thead {
+  background: linear-gradient(135deg, #580827 0%, #3B0418 100%);
+}
+
+.data-table th,
+.budget-table th {
+  padding: 16px 24px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  border-bottom: none;
+}
+
+.data-table tbody tr,
+.budget-table tbody tr {
+  border-bottom: 1px solid rgba(184, 15, 80, 0.05);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.data-table tbody tr:hover,
+.budget-table tbody tr:hover {
+  background: rgba(184, 15, 80, 0.03);
+  transform: scale(1.002);
+}
+
+.data-table tbody tr:nth-child(even),
+.budget-table tbody tr:nth-child(even) {
+  background: rgba(255, 247, 248, 0.5);
+}
+
+.data-table td,
+.budget-table td {
+  padding: 16px 24px;
+  font-size: 14.5px;
+  color: var(--text-dark);
+}
+
+.data-table tbody tr:last-child td,
+.budget-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Numbering column styling */
+.data-table td:first-child,
+.budget-table td:first-child {
+  font-family: var(--font-mono);
+  color: #8E0A3D;
+  font-weight: 700;
+}
+
+/* Custom UI Badges */
 .ratio-badge {
   display: inline-block;
-  background: var(--primary-pale);
-  color: var(--primary);
-  font-family: var(--font-mono);
-  font-size: 12.5px;
+  background: rgba(184, 15, 80, 0.1);
+  color: #B80F50;
   font-weight: 700;
-  padding: 5px 14px;
-  border-radius: var(--r-full);
-  border: 1px solid var(--border-hover);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-family: var(--font-mono);
+  border: 1px solid rgba(184, 15, 80, 0.2);
+  font-size: 12.5px;
 }
 
-/* Flowchart Snake 2-Column Layout */
-.flowchart {
+.free-badge {
+  display: inline-block;
+  color: #059669;
+  background: #D1FAE5;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-family: var(--font-mono);
+}
+
+/* =============================================================================
+   E: ISOLATED METHODOLOGY (SNAKE FLOWCHART WITH STRAIGHT ARROWS)
+   ============================================================================= */
+.snake-flowchart {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px 28px;
+  gap: 36px 48px;
 }
 
 .flow-step {
@@ -599,8 +724,8 @@ img { display: block; max-width: 100%; }
 .flow-step--8 { grid-column: 1; grid-row: 4; }
 
 .flow-number {
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: var(--primary);
   color: #fff;
@@ -621,7 +746,7 @@ img { display: block; max-width: 100%; }
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--r-md);
-  padding: 20px 18px;
+  padding: 22px 20px;
   text-align: center;
   width: 100%;
   box-shadow: var(--shadow-sm);
@@ -631,77 +756,66 @@ img { display: block; max-width: 100%; }
 .flow-card:hover { transform: translateY(-4px); border-color: var(--border-hover); }
 
 .flow-card h4 {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--primary);
   margin-bottom: 8px;
 }
 .flow-card p {
-  font-size: 13px;
+  font-size: 13.5px;
   color: var(--text-muted);
   line-height: 1.55;
 }
 
-/* Directional connector arrows */
-.flow-connector {
-  font-size: 24px;
-  color: var(--primary-light);
-  margin-top: 10px;
-  line-height: 1;
-  font-weight: bold;
-}
-
-/* =============================================================================
-   E: BUDGET TABLE
-   ============================================================================= */
-.budget-table-wrap {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--r-md);
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
-}
-
-.budget-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
-  text-align: left;
-}
-.budget-table thead th {
-  background: var(--primary);
-  color: #fff;
-  font-family: var(--font-sans);
-  font-weight: 700;
-  padding: 14px 16px;
-  letter-spacing: 0.02em;
-}
-.budget-table tbody td {
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--border);
-  color: var(--text-muted);
-  transition: background 0.15s ease;
-}
-.budget-table tbody tr:last-child td { border-bottom: none; }
-.budget-table tbody tr:hover td { background: #FFF0F4; }
-.budget-table tbody td:first-child { color: var(--text-dark); font-weight: 600; }
-
-.budget-table .shipping-row td {
-  background: var(--primary-pale);
-  font-weight: 600;
-  color: var(--text-dark);
-}
-.budget-table tfoot td {
-  background: var(--primary-pale);
+/* Straight Directional Arrow Vectors */
+.flow-arrow {
+  position: absolute;
+  font-size: 26px;
   font-weight: 800;
   color: var(--primary);
-  font-size: 15px;
-  padding: 16px;
-  border-top: 2px solid var(--border-hover);
+  opacity: 0.85;
+  z-index: 10;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.flow-arrow--right {
+  right: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.flow-arrow--left {
+  left: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.flow-arrow--down {
+  bottom: -28px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* =============================================================================
-   F: REFERENCES & VIDEO
+   F: BUDGET TABLE
+   ============================================================================= */
+.budget-table .shipping-row td {
+  background: rgba(184, 15, 80, 0.08);
+  font-weight: 700;
+  color: var(--primary-deep);
+}
+
+.budget-table tfoot td {
+  background: linear-gradient(135deg, #580827 0%, #3B0418 100%);
+  font-weight: 800;
+  color: #FFFFFF;
+  font-size: 15px;
+  padding: 18px 24px;
+}
+
+/* =============================================================================
+   G: REFERENCES & VIDEO
    ============================================================================= */
 .ref-grid {
   display: grid;
@@ -791,6 +905,8 @@ footer .mono { font-family: var(--font-mono); font-size: 12px; margin-top: 14px;
   .hero-actions { justify-content: center; }
   .hero-graphic { margin: 0 auto; }
   .bento-grid { grid-template-columns: 1fr; }
+  .equip-ing-grid { grid-template-columns: 1fr; }
+  .calc-results-grid { grid-template-columns: repeat(2, 1fr); }
   .content-grid { grid-template-columns: repeat(2, 1fr); }
   .ref-grid { grid-template-columns: 1fr; }
 }
@@ -822,22 +938,26 @@ footer .mono { font-family: var(--font-mono); font-size: 12px; margin-top: 14px;
 
   .content-grid { grid-template-columns: 1fr; }
 
-  .flowchart {
+  .snake-flowchart {
     grid-template-columns: 1fr;
-    gap: 18px;
+    gap: 24px;
   }
   .flow-step--1, .flow-step--2, .flow-step--3, .flow-step--4,
   .flow-step--5, .flow-step--6, .flow-step--7, .flow-step--8 {
     grid-column: auto;
     grid-row: auto;
   }
-  .flow-connector {
-    content: "↓";
+  .flow-arrow--right, .flow-arrow--left {
+    display: none;
+  }
+  .flow-arrow--down {
+    bottom: -20px;
   }
 
-  .budget-table thead th,
-  .budget-table tbody td,
-  .budget-table tfoot td { padding: 10px 12px; font-size: 13px; }
+  .calc-results-grid { grid-template-columns: 1fr; }
+
+  .data-table th, .budget-table th,
+  .data-table td, .budget-table td { padding: 12px 16px; font-size: 13.5px; }
 
   .bg-card { padding: 24px; }
 }
@@ -848,7 +968,6 @@ footer .mono { font-family: var(--font-mono); font-size: 12px; margin-top: 14px;
   .mascot-wrap { width: 200px; }
   .section h2 { font-size: 24px; }
   .btn { padding: 11px 22px; font-size: 13.5px; }
-  .budget-table { font-size: 12px; }
   .ref-grid { grid-template-columns: 1fr; }
 }
 
