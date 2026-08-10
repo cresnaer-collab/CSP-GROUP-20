@@ -167,7 +167,6 @@ function initRecipeCalculator() {
   const minusBtn = document.getElementById("calcMinusBtn");
   const plusBtn = document.getElementById("calcPlusBtn");
   const sizeSelect = document.getElementById("calcBatchSizeSelect");
-  const extraGingerToggle = document.getElementById("calcExtraGingerToggle");
 
   if (!batchInput || !minusBtn || !plusBtn || !sizeSelect) return;
 
@@ -189,15 +188,11 @@ function initRecipeCalculator() {
   });
 
   sizeSelect.addEventListener("change", updateCalculator);
-  if (extraGingerToggle) {
-    extraGingerToggle.addEventListener("change", updateCalculator);
-  }
 
   function updateCalculator() {
     const qty = parseInt(batchInput.value) || 1;
     const sizeMult = parseFloat(sizeSelect.value) || 1;
     const totalMult = qty * sizeMult;
-    const isExtraGinger = extraGingerToggle ? extraGingerToggle.checked : false;
 
     // Base 1-batch quantities (Standard 150g fruit recipe base)
     const baseFruit = 150;
@@ -225,7 +220,7 @@ function initRecipeCalculator() {
     const gelatinTbsp = baseGelatin * totalMult;
     const sugarTbsp = baseSugar * totalMult;
     const cornstarchTsp = baseCornstarch * totalMult;
-    const gingerGrams = (baseGinger + (isExtraGinger ? 15 : 0)) * totalMult;
+    const gingerGrams = baseGinger * totalMult;
     const limeMl = baseLime * totalMult;
 
     // Multiplied costs
@@ -234,21 +229,18 @@ function initRecipeCalculator() {
     const itemCostGelatin = Math.round(costGelatin * totalMult);
     const itemCostSugar = Math.round(costSugar * totalMult);
     const itemCostCornstarch = Math.round(costCornstarch * totalMult);
-    const itemCostGinger = Math.round((costGingerUnit + (isExtraGinger ? 500 : 0)) * totalMult);
+    const itemCostGinger = Math.round(costGingerUnit * totalMult);
     const itemCostLime = Math.round(costLime * totalMult);
 
     const totalCost = itemCostFruit + itemCostWater + itemCostGelatin + itemCostSugar + itemCostCornstarch + itemCostGinger + itemCostLime;
     const costPerBatch = Math.round(totalCost / qty);
-    const totalWeight = Math.round(fruitGrams + waterMl + gingerGrams + (gelatinTbsp * 15) + (sugarTbsp * 12) + limeMl);
 
     // Formatter Helpers
     const fmtPrice = (num) => "Rp " + num.toLocaleString("en-US");
 
-    // Header Updates
+    // Header Update
     const displayTitle = document.getElementById("calcDisplayTitle");
-    const displayWeight = document.getElementById("calcTotalWeight");
     if (displayTitle) displayTitle.textContent = `${qty} ${qty === 1 ? "Batch" : "Batches"} PitaJell`;
-    if (displayWeight) displayWeight.textContent = `Total Weight: ~${totalWeight} g`;
 
     // Row-by-Row Ingredient Updates
     const elValFruit = document.getElementById("valFruit");
@@ -280,12 +272,8 @@ function initRecipeCalculator() {
 
     const elValGinger = document.getElementById("valGinger");
     const elPriceGinger = document.getElementById("priceGinger");
-    const elGingerSub = document.getElementById("calcGingerSub");
     if (elValGinger) elValGinger.textContent = `${gingerGrams} g`;
     if (elPriceGinger) elPriceGinger.textContent = fmtPrice(itemCostGinger);
-    if (elGingerSub) {
-      elGingerSub.textContent = isExtraGinger ? "Extra spicy ginger infusion (+15g)" : "Aromatic warmth & health boost";
-    }
 
     const elValLime = document.getElementById("valLime");
     const elPriceLime = document.getElementById("priceLime");
@@ -299,7 +287,6 @@ function initRecipeCalculator() {
     if (elTotalPrice) elTotalPrice.textContent = fmtPrice(totalCost);
   }
 
-  // Fraction formatting helper (e.g. 0.5 -> ½, 1.5 -> 1½)
   function formatFraction(num, unit) {
     const whole = Math.floor(num);
     const remainder = num - whole;
@@ -321,6 +308,5 @@ function initRecipeCalculator() {
     }
   }
 
-  // Initial Calculation Run
   updateCalculator();
 }
