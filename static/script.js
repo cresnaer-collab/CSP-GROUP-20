@@ -1,7 +1,7 @@
 /* ==========================================================================
    PITAJELL — Frontend Interaction Logic
    Active navbar tracking, reveal animations, mascot infinite animation loop,
-   and bioactive health showcase interactions.
+   bioactive health showcase interactions, and interactive recipe calculator.
    ========================================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initRevealAnimations();
   initMascotAnimation();
   initBioactiveShowcase();
+  initRecipeCalculator();
 });
 
 /* ─── 1. STICKY NAV, SCROLL TRACKING & MOBILE MENU ─── */
@@ -158,4 +159,168 @@ function initBioactiveShowcase() {
       card.classList.add("active");
     });
   });
+}
+
+/* ─── 5. INTERACTIVE RECIPE BATCH CALCULATOR ─── */
+function initRecipeCalculator() {
+  const batchInput = document.getElementById("calcBatchInput");
+  const minusBtn = document.getElementById("calcMinusBtn");
+  const plusBtn = document.getElementById("calcPlusBtn");
+  const sizeSelect = document.getElementById("calcBatchSizeSelect");
+  const extraGingerToggle = document.getElementById("calcExtraGingerToggle");
+
+  if (!batchInput || !minusBtn || !plusBtn || !sizeSelect) return;
+
+  // Event Listeners for Controls
+  minusBtn.addEventListener("click", () => {
+    let val = parseInt(batchInput.value) || 1;
+    if (val > 1) {
+      batchInput.value = val - 1;
+      updateCalculator();
+    }
+  });
+
+  plusBtn.addEventListener("click", () => {
+    let val = parseInt(batchInput.value) || 1;
+    if (val < 50) {
+      batchInput.value = val + 1;
+      updateCalculator();
+    }
+  });
+
+  sizeSelect.addEventListener("change", updateCalculator);
+  if (extraGingerToggle) {
+    extraGingerToggle.addEventListener("change", updateCalculator);
+  }
+
+  function updateCalculator() {
+    const qty = parseInt(batchInput.value) || 1;
+    const sizeMult = parseFloat(sizeSelect.value) || 1;
+    const totalMult = qty * sizeMult;
+    const isExtraGinger = extraGingerToggle ? extraGingerToggle.checked : false;
+
+    // Base 1-batch quantities (Standard 150g fruit recipe base)
+    const baseFruit = 150;
+    const baseWater = 50;
+    const baseGelatin = 0.5;    // tbsp
+    const baseSugar = 3;        // tbsp
+    const baseCornstarch = 0.5; // tsp
+    const baseGinger = 15;      // g
+    const baseLime = 15;        // ml
+
+    // Estimated unit costs per base recipe
+    const costFruit = 8400;
+    const costWater = 100;
+    const costGelatin = 1750;
+    const costSugar = 1125;
+    const costCornstarch = 150;
+    const costGingerUnit = 500;
+    const costLime = 1250;
+
+    // Multiplied quantities
+    const fruitGrams = baseFruit * totalMult;
+    const skinGrams = Math.round(fruitGrams * 0.2);
+    const fleshGrams = fruitGrams - skinGrams;
+    const waterMl = baseWater * totalMult;
+    const gelatinTbsp = baseGelatin * totalMult;
+    const sugarTbsp = baseSugar * totalMult;
+    const cornstarchTsp = baseCornstarch * totalMult;
+    const gingerGrams = (baseGinger + (isExtraGinger ? 15 : 0)) * totalMult;
+    const limeMl = baseLime * totalMult;
+
+    // Multiplied costs
+    const itemCostFruit = Math.round(costFruit * totalMult);
+    const itemCostWater = Math.round(costWater * totalMult);
+    const itemCostGelatin = Math.round(costGelatin * totalMult);
+    const itemCostSugar = Math.round(costSugar * totalMult);
+    const itemCostCornstarch = Math.round(costCornstarch * totalMult);
+    const itemCostGinger = Math.round((costGingerUnit + (isExtraGinger ? 500 : 0)) * totalMult);
+    const itemCostLime = Math.round(costLime * totalMult);
+
+    const totalCost = itemCostFruit + itemCostWater + itemCostGelatin + itemCostSugar + itemCostCornstarch + itemCostGinger + itemCostLime;
+    const costPerBatch = Math.round(totalCost / qty);
+    const totalWeight = Math.round(fruitGrams + waterMl + gingerGrams + (gelatinTbsp * 15) + (sugarTbsp * 12) + limeMl);
+
+    // Formatter Helpers
+    const fmtPrice = (num) => "Rp " + num.toLocaleString("en-US");
+
+    // Header Updates
+    const displayTitle = document.getElementById("calcDisplayTitle");
+    const displayWeight = document.getElementById("calcTotalWeight");
+    if (displayTitle) displayTitle.textContent = `${qty} ${qty === 1 ? "Batch" : "Batches"} PitaJell`;
+    if (displayWeight) displayWeight.textContent = `Total Weight: ~${totalWeight} g`;
+
+    // Row-by-Row Ingredient Updates
+    const elValFruit = document.getElementById("valFruit");
+    const elPriceFruit = document.getElementById("priceFruit");
+    const elFruitSub = document.getElementById("calcFruitSub");
+    if (elValFruit) elValFruit.textContent = `${fruitGrams} g`;
+    if (elPriceFruit) elPriceFruit.textContent = fmtPrice(itemCostFruit);
+    if (elFruitSub) elFruitSub.textContent = `${skinGrams}g skin & ${fleshGrams}g flesh (20% peel ratio)`;
+
+    const elValWater = document.getElementById("valWater");
+    const elPriceWater = document.getElementById("priceWater");
+    if (elValWater) elValWater.textContent = `${waterMl} ml`;
+    if (elPriceWater) elPriceWater.textContent = fmtPrice(itemCostWater);
+
+    const elValGelatin = document.getElementById("valGelatin");
+    const elPriceGelatin = document.getElementById("priceGelatin");
+    if (elValGelatin) elValGelatin.textContent = formatFraction(gelatinTbsp, "tbsp");
+    if (elPriceGelatin) elPriceGelatin.textContent = fmtPrice(itemCostGelatin);
+
+    const elValSugar = document.getElementById("valSugar");
+    const elPriceSugar = document.getElementById("priceSugar");
+    if (elValSugar) elValSugar.textContent = formatFraction(sugarTbsp, "tbsp");
+    if (elPriceSugar) elPriceSugar.textContent = fmtPrice(itemCostSugar);
+
+    const elValCornstarch = document.getElementById("valCornstarch");
+    const elPriceCornstarch = document.getElementById("priceCornstarch");
+    if (elValCornstarch) elValCornstarch.textContent = formatFraction(cornstarchTsp, "tsp");
+    if (elPriceCornstarch) elPriceCornstarch.textContent = fmtPrice(itemCostCornstarch);
+
+    const elValGinger = document.getElementById("valGinger");
+    const elPriceGinger = document.getElementById("priceGinger");
+    const elGingerSub = document.getElementById("calcGingerSub");
+    if (elValGinger) elValGinger.textContent = `${gingerGrams} g`;
+    if (elPriceGinger) elPriceGinger.textContent = fmtPrice(itemCostGinger);
+    if (elGingerSub) {
+      elGingerSub.textContent = isExtraGinger ? "Extra spicy ginger infusion (+15g)" : "Aromatic warmth & health boost";
+    }
+
+    const elValLime = document.getElementById("valLime");
+    const elPriceLime = document.getElementById("priceLime");
+    if (elValLime) elValLime.textContent = `${limeMl} ml`;
+    if (elPriceLime) elPriceLime.textContent = fmtPrice(itemCostLime);
+
+    // Footer Total Cost Updates
+    const elCostPerBatch = document.getElementById("calcCostPerBatch");
+    const elTotalPrice = document.getElementById("calcTotalPrice");
+    if (elCostPerBatch) elCostPerBatch.textContent = `≈ Rp ${costPerBatch.toLocaleString("en-US")} per batch`;
+    if (elTotalPrice) elTotalPrice.textContent = fmtPrice(totalCost);
+  }
+
+  // Fraction formatting helper (e.g. 0.5 -> ½, 1.5 -> 1½)
+  function formatFraction(num, unit) {
+    const whole = Math.floor(num);
+    const remainder = num - whole;
+    let fracStr = "";
+    if (Math.abs(remainder - 0.5) < 0.05) {
+      fracStr = "½";
+    } else if (Math.abs(remainder - 0.25) < 0.05) {
+      fracStr = "¼";
+    } else if (Math.abs(remainder - 0.75) < 0.05) {
+      fracStr = "¾";
+    }
+
+    if (whole === 0) {
+      return `${fracStr || remainder.toFixed(1)} ${unit}`;
+    } else if (fracStr !== "") {
+      return `${whole}${fracStr} ${unit}`;
+    } else {
+      return `${whole} ${unit}`;
+    }
+  }
+
+  // Initial Calculation Run
+  updateCalculator();
 }

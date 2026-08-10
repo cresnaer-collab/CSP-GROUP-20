@@ -26,6 +26,7 @@
     <a href="#contents">Contents &amp; Health Benefits</a>
     <a href="#stem">Academic Focus</a>
     <a href="#equipment-ingredients">Equipment &amp; Ingredients</a>
+    <a href="#calculator">Recipe Calculator</a>
     <a href="#methodology">Methodology</a>
     <a href="#budget">Budget</a>
     <a href="#references">References</a>
@@ -76,7 +77,7 @@
     <h2>Contents of a Dragon Fruit &amp; Health Benefits</h2>
     <p class="section-sub">The Dragon fruit (<em>Hylocereus spp.</em>) has lots of nutritious components rich in bioactive phytochemical compounds and health benefits:</p>
 
-        <div class="bioactive-grid">
+    <div class="bioactive-grid">
       <!-- 1. Betalains -->
       <div class="bioactive-card">
         <h3>Betalains</h3>
@@ -102,7 +103,7 @@
       </div>
     </div>
 
-  <div class="method-block" style="margin-top: 2rem;">
+    <div class="method-block" style="margin-top: 2rem;">
       <h3 class="method-heading" style="margin-bottom: 0.8rem; font-size: 1.1rem;">Laboratory Content Analysis of Red Dragon Fruit Peel</h3>
       <div class="data-table-wrap">
         <table class="data-table">
@@ -222,9 +223,9 @@
         </div>
       </div>
 
-      <!-- Ingredients Table -->
+      <!-- Ingredients Table (Updated to 1/2 Batch Base Recipe) -->
       <div class="method-block">
-        <h3 class="method-heading">Table 2: Ingredients</h3>
+        <h3 class="method-heading">Table 2: Ingredients (Base Recipe - 1 Batch)</h3>
         <div class="data-table-wrap">
           <table class="data-table">
             <thead>
@@ -237,31 +238,209 @@
             <tbody>
               <tr>
                 <td>1</td>
-                <td><strong>Dragon fruit</strong></td>
-                <td>Ratio 1 : 1 (Skin : Flesh)</td>
+                <td><strong>Red Dragon Fruit</strong></td>
+                <td>150 g (1:4 Skin to Flesh / 30g skin &amp; 120g flesh)</td>
               </tr>
               <tr>
                 <td>2</td>
-                <td><strong>Bovine Gelatin</strong></td>
-                <td>1 tablespoon</td>
+                <td><strong>Water</strong></td>
+                <td>50 ml</td>
               </tr>
               <tr>
                 <td>3</td>
-                <td><strong>Granulated Sugar</strong></td>
-                <td>6 tablespoons</td>
+                <td><strong>Bovine Gelatin</strong></td>
+                <td>½ tablespoon</td>
               </tr>
               <tr>
                 <td>4</td>
-                <td><strong>Cornstarch</strong></td>
-                <td>1 teaspoon</td>
+                <td><strong>Granulated Sugar</strong></td>
+                <td>3 tablespoons</td>
               </tr>
               <tr>
                 <td>5</td>
-                <td><strong>Citric Acid</strong></td>
+                <td><strong>Cornstarch</strong></td>
                 <td>½ teaspoon</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td><strong>Ginger</strong></td>
+                <td>15 g</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td><strong>Lemon / Lime</strong></td>
+                <td>15 ml</td>
               </tr>
             </tbody>
           </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── INTERACTIVE RECIPE CALCULATOR ───── -->
+  <section id="calculator" class="section reveal">
+    <h2>How Much Do You Need?</h2>
+    <p class="section-sub">Enter the number of jelly batches you want to make and the calculator will instantly compute the exact quantities of every ingredient and estimated market cost.</p>
+
+    <div class="recipe-calc-wrapper">
+      <!-- Controls Panel (Left) -->
+      <div class="calc-control-panel">
+        <div class="calc-field-group">
+          <label class="calc-field-label">NUMBER OF BATCHES</label>
+          <div class="calc-qty-control">
+            <button type="button" class="calc-btn-qty" id="calcMinusBtn" aria-label="Decrease quantity">-</button>
+            <input type="number" id="calcBatchInput" value="1" min="1" max="50" readonly>
+            <button type="button" class="calc-btn-qty" id="calcPlusBtn" aria-label="Increase quantity">+</button>
+          </div>
+        </div>
+
+        <div class="calc-field-group">
+          <label class="calc-field-label" for="calcBatchSizeSelect">BATCH SIZE VARIATION</label>
+          <select id="calcBatchSizeSelect" class="calc-select">
+            <option value="1">Standard Batch (150 g Fruit)</option>
+            <option value="1.5">Medium Batch (225 g Fruit)</option>
+            <option value="2">Large Batch (300 g Fruit)</option>
+          </select>
+        </div>
+
+        <div class="calc-field-group">
+          <label class="calc-field-label">RECIPE OPTIONS</label>
+          <div class="calc-toggle-row">
+            <span>Extra Ginger Infusion?</span>
+            <label class="calc-switch">
+              <input type="checkbox" id="calcExtraGingerToggle">
+              <span class="calc-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <p class="calc-note-text">
+          💡 Recipe based on standard 150g dragon fruit base ratio (20% peel / 80% flesh). Market prices are estimated per unit.
+        </p>
+      </div>
+
+      <!-- Output Display Panel (Right) -->
+      <div class="calc-display-panel">
+        <div class="calc-display-header">
+          <h3 id="calcDisplayTitle">1 Batch PitaJell</h3>
+          <span class="calc-total-weight" id="calcTotalWeight">Total Weight: ~260 g</span>
+        </div>
+
+        <div class="calc-ingredient-list">
+          <!-- Item 1: Dragon Fruit -->
+          <div class="calc-ing-row">
+            <div class="calc-ing-info">
+              <span class="calc-ing-icon">🐉</span>
+              <div>
+                <strong>Red Dragon Fruit</strong>
+                <small id="calcFruitSub">30g skin &amp; 120g flesh (20% peel ratio)</small>
+              </div>
+            </div>
+            <div class="calc-ing-val">
+              <span class="calc-amount" id="valFruit">150 g</span>
+              <span class="calc-price" id="priceFruit">Rp 8,400</span>
+            </div>
+          </div>
+
+          <!-- Item 2: Water -->
+          <div class="calc-ing-row">
+            <div class="calc-ing-info">
+              <span class="calc-ing-icon">💧</span>
+              <div>
+                <strong>Water</strong>
+                <small>Pure liquid base for gelatin dissolving</small>
+              </div>
+            </div>
+            <div class="calc-ing-val">
+              <span class="calc-amount" id="valWater">50 ml</span>
+              <span class="calc-price" id="priceWater">Rp 100</span>
+            </div>
+          </div>
+
+          <!-- Item 3: Bovine Gelatin -->
+          <div class="calc-ing-row">
+            <div class="calc-ing-info">
+              <span class="calc-ing-icon">🧪</span>
+              <div>
+                <strong>Bovine Gelatin</strong>
+                <small>Structure &amp; chewiness setting agent</small>
+              </div>
+            </div>
+            <div class="calc-ing-val">
+              <span class="calc-amount" id="valGelatin">½ tbsp</span>
+              <span class="calc-price" id="priceGelatin">Rp 1,750</span>
+            </div>
+          </div>
+
+          <!-- Item 4: Granulated Sugar -->
+          <div class="calc-ing-row">
+            <div class="calc-ing-info">
+              <span class="calc-ing-icon">🍬</span>
+              <div>
+                <strong>Granulated Sugar</strong>
+                <small>Sweetener &amp; natural preservative</small>
+              </div>
+            </div>
+            <div class="calc-ing-val">
+              <span class="calc-amount" id="valSugar">3 tbsp</span>
+              <span class="calc-price" id="priceSugar">Rp 1,125</span>
+            </div>
+          </div>
+
+          <!-- Item 5: Cornstarch -->
+          <div class="calc-ing-row">
+            <div class="calc-ing-info">
+              <span class="calc-ing-icon">🌾</span>
+              <div>
+                <strong>Cornstarch</strong>
+                <small>Thickener &amp; texture stabilizer</small>
+              </div>
+            </div>
+            <div class="calc-ing-val">
+              <span class="calc-amount" id="valCornstarch">½ tsp</span>
+              <span class="calc-price" id="priceCornstarch">Rp 150</span>
+            </div>
+          </div>
+
+          <!-- Item 6: Ginger -->
+          <div class="calc-ing-row">
+            <div class="calc-ing-info">
+              <span class="calc-ing-icon">🫚</span>
+              <div>
+                <strong>Fresh Ginger</strong>
+                <small id="calcGingerSub">Aromatic warmth &amp; health boost</small>
+              </div>
+            </div>
+            <div class="calc-ing-val">
+              <span class="calc-amount" id="valGinger">15 g</span>
+              <span class="calc-price" id="priceGinger">Rp 500</span>
+            </div>
+          </div>
+
+          <!-- Item 7: Lemon / Lime -->
+          <div class="calc-ing-row">
+            <div class="calc-ing-info">
+              <span class="calc-ing-icon">🍋</span>
+              <div>
+                <strong>Lemon / Lime Juice</strong>
+                <small>Natural acidity, flavor enhancer &amp; pH control</small>
+              </div>
+            </div>
+            <div class="calc-ing-val">
+              <span class="calc-amount" id="valLime">15 ml</span>
+              <span class="calc-price" id="priceLime">Rp 1,250</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Total Cost Footer -->
+        <div class="calc-display-footer">
+          <div>
+            <span class="calc-cost-label">Estimated Total Material Cost</span>
+            <span class="calc-cost-sub" id="calcCostPerBatch">≈ Rp 13,275 per batch</span>
+          </div>
+          <div class="calc-total-price" id="calcTotalPrice">Rp 13,275</div>
         </div>
       </div>
     </div>
@@ -277,7 +456,7 @@
         <div class="flow-number">1</div>
         <div class="flow-card">
           <h4>Preparation</h4>
-          <p>Thoroughly wash the dragon fruit. Separate the pink skin and the red flesh, ensuring a 1:1 ratio by weight. Clean the outer skin of any rough scales or blemishes.</p>
+          <p>Thoroughly wash the dragon fruit. Separate the pink skin and the red flesh, ensuring a 1:4 skin to flesh ratio (30g skin : 120g flesh). Clean the outer skin of any rough scales.</p>
         </div>
         <div class="flow-arrow flow-arrow--right">→</div>
       </div>
@@ -285,8 +464,8 @@
       <div class="flow-step flow-step--2">
         <div class="flow-number">2</div>
         <div class="flow-card">
-          <h4>Steaming the Skin</h4>
-          <p>Place the dragon fruit skin into the steamer. Steam until the skin is softened. This helps reduce bitterness and soften the tough outer layer.</p>
+          <h4>Steaming the Skin &amp; Ginger</h4>
+          <p>Place the dragon fruit skin and 15g ginger into the steamer. Steam until softened to reduce bitterness and unlock aromatics.</p>
         </div>
         <div class="flow-arrow flow-arrow--down">↓</div>
       </div>
@@ -296,7 +475,7 @@
         <div class="flow-number">3</div>
         <div class="flow-card">
           <h4>Blending</h4>
-          <p>Transfer the softened skin and fresh dragon fruit flesh into the blender. Blend until completely smooth and uniform.</p>
+          <p>Transfer the softened skin, fresh dragon fruit flesh, steamed ginger, and 50ml water into the blender. Blend until smooth and uniform.</p>
         </div>
         <div class="flow-arrow flow-arrow--left">←</div>
       </div>
@@ -305,7 +484,7 @@
         <div class="flow-number">4</div>
         <div class="flow-card">
           <h4>Combining Ingredients</h4>
-          <p>Pour the blended mixture into the pot. Add 1 tablespoon gelatin, 6 tablespoons sugar, 1 teaspoon cornstarch, and 1 teaspoon citric acid. Mix thoroughly using a spoon or spatula.</p>
+          <p>Pour the blended mixture into the pot. Add ½ tbsp gelatin, 3 tbsp sugar, ½ tsp cornstarch, and 15ml lemon juice. Stir thoroughly using a spatula.</p>
         </div>
         <div class="flow-arrow flow-arrow--down">↓</div>
       </div>
@@ -315,7 +494,7 @@
         <div class="flow-number">5</div>
         <div class="flow-card">
           <h4>Cooking and Dissolving</h4>
-          <p>Heat over low-to-medium heat. Stir continuously to prevent burning and ensure the gelatin and sugar fully dissolve into a smooth, thick liquid.</p>
+          <p>Heat over low-to-medium heat. Stir continuously to prevent burning and ensure gelatin and sugar fully dissolve into a smooth, thick liquid.</p>
         </div>
         <div class="flow-arrow flow-arrow--right">→</div>
       </div>
@@ -324,7 +503,7 @@
         <div class="flow-number">6</div>
         <div class="flow-card">
           <h4>Molding</h4>
-          <p>Pour the hot mixture evenly into a rectangular metal mold or any preferred container.</p>
+          <p>Pour the hot mixture evenly into a rectangular metal mold or preferred container.</p>
         </div>
         <div class="flow-arrow flow-arrow--down">↓</div>
       </div>
@@ -404,7 +583,7 @@
             <td>Rp6,000</td>
             <td>Rp6,000</td>
           </tr>
-                    <tr>
+          <tr>
             <td>5</td>
             <td>Ginger</td>
             <td>1</td>
@@ -413,7 +592,7 @@
             <td>Rp0</td>
             <td>Rp0</td>
           </tr>
-            <tr>
+          <tr>
             <td>6</td>
             <td>Lemon</td>
             <td>1</td>

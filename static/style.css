@@ -1029,3 +1029,314 @@ a:focus-visible, button:focus-visible, select:focus-visible {
   outline-offset: 3px;
   border-radius: 4px;
 }
+/* =============================================================================
+   INTERACTIVE RECIPE CALCULATOR (2-COLUMN WIDGET)
+   ============================================================================= */
+.recipe-calc-wrapper {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 28px;
+  align-items: start;
+  margin-top: 32px;
+}
+
+/* ── Panel Kiri: Control Inputs ── */
+.calc-control-panel {
+  background: var(--primary-dark);
+  color: #FFFFFF;
+  border-radius: var(--r-lg);
+  padding: 32px 28px;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.calc-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.calc-field-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+}
+
+/* Quantity Counter (+ / -) */
+.calc-qty-control {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--r-md);
+  padding: 4px;
+}
+
+.calc-btn-qty {
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: none;
+  color: #FFFFFF;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: var(--r-sm);
+  transition: background 0.18s var(--ease), transform 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calc-btn-qty:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.calc-btn-qty:active {
+  transform: scale(0.92);
+}
+
+.calc-qty-control input {
+  flex-grow: 1;
+  background: transparent;
+  border: none;
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 20px;
+  font-weight: 800;
+  text-align: center;
+  outline: none;
+  width: 100%;
+}
+
+/* Select Dropdown */
+.calc-select {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--r-md);
+  color: #FFFFFF;
+  padding: 12px 16px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.calc-select option {
+  background: var(--primary-dark);
+  color: #FFFFFF;
+}
+
+.calc-select:focus {
+  border-color: var(--primary-light);
+}
+
+/* Toggle Switch Row */
+.calc-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 600;
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 12px 16px;
+  border-radius: var(--r-md);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.calc-switch {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 26px;
+}
+
+.calc-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.calc-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: 0.3s var(--ease);
+  border-radius: 34px;
+}
+
+.calc-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.3s var(--ease);
+  border-radius: 50%;
+}
+
+.calc-switch input:checked + .calc-slider {
+  background-color: var(--primary-light);
+}
+
+.calc-switch input:checked + .calc-slider:before {
+  transform: translateX(20px);
+}
+
+.calc-note-text {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.55;
+  margin-top: 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 16px;
+}
+
+/* ── Panel Kanan: Dynamic Output Display ── */
+.calc-display-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.calc-display-header {
+  background: var(--primary-dark);
+  color: #FFFFFF;
+  padding: 22px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.calc-display-header h3 {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #FFFFFF;
+}
+
+.calc-total-weight {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary-pale);
+  background: rgba(255, 255, 255, 0.12);
+  padding: 4px 12px;
+  border-radius: var(--r-full);
+}
+
+/* Ingredient List Rows */
+.calc-ingredient-list {
+  padding: 8px 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+.calc-ing-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(184, 15, 80, 0.08);
+}
+
+.calc-ing-row:last-child {
+  border-bottom: none;
+}
+
+.calc-ing-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.calc-ing-icon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.calc-ing-info strong {
+  display: block;
+  font-size: 14.5px;
+  color: var(--text-dark);
+}
+
+.calc-ing-info small {
+  display: block;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.calc-ing-val {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.calc-amount {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+.calc-price {
+  font-size: 12px;
+  font-weight: 600;
+  color: #2e7d32; /* Soft Green for Cost */
+}
+
+/* Footer Section Total Cost */
+.calc-display-footer {
+  background: var(--primary-pale);
+  border-top: 1.5px solid var(--border-hover);
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.calc-cost-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--primary-dark);
+}
+
+.calc-cost-sub {
+  display: block;
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.calc-total-price {
+  font-family: var(--font-sans);
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--primary-dark);
+  letter-spacing: -0.02em;
+}
+
+/* ── Responsive adjustments for Calculator ── */
+@media (max-width: 900px) {
+  .recipe-calc-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
