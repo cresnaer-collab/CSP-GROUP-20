@@ -315,10 +315,10 @@
     </div>
   </section>
 
-<!-- ───── INTERACTIVE RECIPE CALCULATOR ───── -->
+  <!-- ───── INTERACTIVE RECIPE CALCULATOR ───── -->
   <section id="calculator" class="section reveal">
     <h2>How Much Do You Need?</h2>
-    <p class="section-sub">Enter the number of jelly batches you want to make and the calculator will instantly compute the exact quantities of every ingredient and estimated market cost.</p>
+    <p class="section-sub">Enter the number of jelly batches you want to make and customize your recipe variation to compute exact ingredient amounts and estimated material cost.</p>
 
     <div class="recipe-calc-wrapper">
       <!-- Controls Panel (Left) -->
@@ -333,11 +333,28 @@
         </div>
 
         <div class="calc-field-group">
-          <label class="calc-field-label" for="calcBatchSizeSelect">BATCH SIZE VARIATION</label>
+          <label class="calc-field-label" for="calcBatchSizeSelect">DRAGON FRUIT SIZE</label>
           <select id="calcBatchSizeSelect" class="calc-select">
-            <option value="1">Standard Batch (150 g Fruit)</option>
-            <option value="1.5">Medium Batch (225 g Fruit)</option>
-            <option value="2">Large Batch (300 g Fruit)</option>
+            <option value="1">Standard Batch (120 g Fruit)</option>
+            <option value="1.5">Medium Batch (180 g Fruit)</option>
+            <option value="2">Large Batch (240 g Fruit)</option>
+          </select>
+        </div>
+
+        <div class="calc-field-group">
+          <label class="calc-field-label" for="calcLemonSelect">LEMON JUICE VOLUME</label>
+          <select id="calcLemonSelect" class="calc-select">
+            <option value="0">0 ml (No Lemon)</option>
+            <option value="7.5" selected>7.5 ml</option>
+            <option value="15">15 ml</option>
+          </select>
+        </div>
+
+        <div class="calc-field-group">
+          <label class="calc-field-label" for="calcGellingSelect">GELLING AGENT</label>
+          <select id="calcGellingSelect" class="calc-select">
+            <option value="gelatin" selected>Bovine Gelatin</option>
+            <option value="agar">Agar Powder</option>
           </select>
         </div>
       </div>
@@ -352,105 +369,98 @@
           <!-- Item 1: Dragon Fruit -->
           <div class="calc-ing-row">
             <div class="calc-ing-info">
-              <span class="calc-ing-icon">🐉</span>
               <div>
                 <strong>Red Dragon Fruit</strong>
-                <small id="calcFruitSub">30g skin &amp; 120g flesh (20% peel ratio)</small>
+                <small id="calcFruitSub">24g skin &amp; 96g flesh (20% peel ratio)</small>
               </div>
             </div>
             <div class="calc-ing-val">
-              <span class="calc-amount" id="valFruit">150 g</span>
-              <span class="calc-price" id="priceFruit">Rp 8,400</span>
+              <span class="calc-amount" id="valFruit">120 g</span>
+              <span class="calc-price" id="priceFruit">Rp 6,720</span>
             </div>
           </div>
 
           <!-- Item 2: Water -->
           <div class="calc-ing-row">
             <div class="calc-ing-info">
-              <span class="calc-ing-icon">💧</span>
               <div>
                 <strong>Water</strong>
-                <small>Pure liquid base for gelatin dissolving</small>
+                <small>Pure liquid base</small>
               </div>
             </div>
             <div class="calc-ing-val">
-              <span class="calc-amount" id="valWater">50 ml</span>
-              <span class="calc-price" id="priceWater">Rp 100</span>
+              <span class="calc-amount" id="valWater">100 ml</span>
+              <span class="calc-price" id="priceWater">Rp 200</span>
             </div>
           </div>
 
-          <!-- Item 3: Bovine Gelatin -->
+          <!-- Item 3: Gelling Agent (Gelatin / Agar Powder) -->
           <div class="calc-ing-row">
             <div class="calc-ing-info">
-              <span class="calc-ing-icon">🧪</span>
               <div>
-                <strong>Bovine Gelatin</strong>
-                <small>Structure &amp; chewiness setting agent</small>
+                <strong id="labelGelling">Bovine Gelatin</strong>
+                <small id="subGelling">Structure &amp; chewiness setting agent</small>
               </div>
             </div>
             <div class="calc-ing-val">
-              <span class="calc-amount" id="valGelatin">½ tbsp</span>
-              <span class="calc-price" id="priceGelatin">Rp 1,750</span>
+              <span class="calc-amount" id="valGelling">1 tbsp</span>
+              <span class="calc-price" id="priceGelling">Rp 3,500</span>
             </div>
           </div>
 
-          <!-- Item 4: Granulated Sugar -->
+          <!-- Item 4: Sugar -->
           <div class="calc-ing-row">
             <div class="calc-ing-info">
-              <span class="calc-ing-icon">🍬</span>
               <div>
-                <strong>Granulated Sugar</strong>
+                <strong>Sugar</strong>
                 <small>Sweetener &amp; natural preservative</small>
               </div>
             </div>
             <div class="calc-ing-val">
-              <span class="calc-amount" id="valSugar">3 tbsp</span>
-              <span class="calc-price" id="priceSugar">Rp 1,125</span>
+              <span class="calc-amount" id="valSugar">6 tbsp</span>
+              <span class="calc-price" id="priceSugar">Rp 2,250</span>
             </div>
           </div>
 
           <!-- Item 5: Cornstarch -->
           <div class="calc-ing-row">
             <div class="calc-ing-info">
-              <span class="calc-ing-icon">🌾</span>
               <div>
                 <strong>Cornstarch</strong>
                 <small>Thickener &amp; texture stabilizer</small>
               </div>
             </div>
             <div class="calc-ing-val">
-              <span class="calc-amount" id="valCornstarch">½ tsp</span>
-              <span class="calc-price" id="priceCornstarch">Rp 150</span>
+              <span class="calc-amount" id="valCornstarch">1 tsp</span>
+              <span class="calc-price" id="priceCornstarch">Rp 300</span>
             </div>
           </div>
 
           <!-- Item 6: Ginger -->
           <div class="calc-ing-row">
             <div class="calc-ing-info">
-              <span class="calc-ing-icon">🫚</span>
               <div>
-                <strong>Fresh Ginger</strong>
+                <strong>Ginger</strong>
                 <small>Aromatic warmth &amp; health boost</small>
               </div>
             </div>
             <div class="calc-ing-val">
-              <span class="calc-amount" id="valGinger">15 g</span>
-              <span class="calc-price" id="priceGinger">Rp 500</span>
+              <span class="calc-amount" id="valGinger">10 g</span>
+              <span class="calc-price" id="priceGinger">Rp 350</span>
             </div>
           </div>
 
-          <!-- Item 7: Lemon / Lime -->
+          <!-- Item 7: Lemon -->
           <div class="calc-ing-row">
             <div class="calc-ing-info">
-              <span class="calc-ing-icon">🍋</span>
               <div>
-                <strong>Lemon / Lime Juice</strong>
-                <small>Natural acidity, flavor enhancer &amp; pH control</small>
+                <strong>Lemon Juice</strong>
+                <small>Natural acidity &amp; pH control</small>
               </div>
             </div>
             <div class="calc-ing-val">
-              <span class="calc-amount" id="valLime">15 ml</span>
-              <span class="calc-price" id="priceLime">Rp 1,250</span>
+              <span class="calc-amount" id="valLemon">7.5 ml</span>
+              <span class="calc-price" id="priceLemon">Rp 625</span>
             </div>
           </div>
         </div>
@@ -459,9 +469,9 @@
         <div class="calc-display-footer">
           <div>
             <span class="calc-cost-label">Estimated Total Material Cost</span>
-            <span class="calc-cost-sub" id="calcCostPerBatch">≈ Rp 13,275 per batch</span>
+            <span class="calc-cost-sub" id="calcCostPerBatch">≈ Rp 13,945 per batch</span>
           </div>
-          <div class="calc-total-price" id="calcTotalPrice">Rp 13,275</div>
+          <div class="calc-total-price" id="calcTotalPrice">Rp 13,945</div>
         </div>
       </div>
     </div>

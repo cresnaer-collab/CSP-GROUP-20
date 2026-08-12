@@ -167,8 +167,10 @@ function initRecipeCalculator() {
   const minusBtn = document.getElementById("calcMinusBtn");
   const plusBtn = document.getElementById("calcPlusBtn");
   const sizeSelect = document.getElementById("calcBatchSizeSelect");
+  const lemonSelect = document.getElementById("calcLemonSelect");
+  const gellingSelect = document.getElementById("calcGellingSelect");
 
-  if (!batchInput || !minusBtn || !plusBtn || !sizeSelect) return;
+  if (!batchInput || !minusBtn || !plusBtn || !sizeSelect || !lemonSelect || !gellingSelect) return;
 
   // Event Listeners for Controls
   minusBtn.addEventListener("click", () => {
@@ -188,51 +190,70 @@ function initRecipeCalculator() {
   });
 
   sizeSelect.addEventListener("change", updateCalculator);
+  lemonSelect.addEventListener("change", updateCalculator);
+  gellingSelect.addEventListener("change", updateCalculator);
 
   function updateCalculator() {
     const qty = parseInt(batchInput.value) || 1;
     const sizeMult = parseFloat(sizeSelect.value) || 1;
     const totalMult = qty * sizeMult;
 
-    // Base 1-batch quantities (Standard 150g fruit recipe base)
-    const baseFruit = 150;
-    const baseWater = 50;
-    const baseGelatin = 0.5;    // tbsp
-    const baseSugar = 3;        // tbsp
-    const baseCornstarch = 0.5; // tsp
-    const baseGinger = 15;      // g
-    const baseLime = 15;        // ml
+    const lemonVal = parseFloat(lemonSelect.value) || 0;
+    const gellingType = gellingSelect.value; // 'gelatin' or 'agar'
 
-    // Estimated unit costs per base recipe
-    const costFruit = 8400;
-    const costWater = 100;
-    const costGelatin = 1750;
-    const costSugar = 1125;
-    const costCornstarch = 150;
-    const costGingerUnit = 500;
-    const costLime = 1250;
+    // Base 1-batch quantities (Table 2 Standards: 120g fruit base)
+    const baseFruit = 120;
+    const baseWater = 100;
+    const baseSugar = 6;        // tbsp
+    const baseCornstarch = 1;   // tsp
+    const baseGinger = 10;      // g
+
+    // Estimated unit costs
+    const costFruit = 6720;
+    const costWater = 200;
+    const costSugar = 2250;
+    const costCornstarch = 300;
+    const costGinger = 350;
 
     // Multiplied quantities
     const fruitGrams = baseFruit * totalMult;
     const skinGrams = Math.round(fruitGrams * 0.2);
     const fleshGrams = fruitGrams - skinGrams;
     const waterMl = baseWater * totalMult;
-    const gelatinTbsp = baseGelatin * totalMult;
     const sugarTbsp = baseSugar * totalMult;
     const cornstarchTsp = baseCornstarch * totalMult;
     const gingerGrams = baseGinger * totalMult;
-    const limeMl = baseLime * totalMult;
+    const lemonMl = lemonVal * totalMult;
 
-    // Multiplied costs
+    // Item costs
     const itemCostFruit = Math.round(costFruit * totalMult);
     const itemCostWater = Math.round(costWater * totalMult);
-    const itemCostGelatin = Math.round(costGelatin * totalMult);
     const itemCostSugar = Math.round(costSugar * totalMult);
     const itemCostCornstarch = Math.round(costCornstarch * totalMult);
-    const itemCostGinger = Math.round(costGingerUnit * totalMult);
-    const itemCostLime = Math.round(costLime * totalMult);
+    const itemCostGinger = Math.round(costGinger * totalMult);
+    const itemCostLemon = Math.round(lemonMl * (1250 / 15));
 
-    const totalCost = itemCostFruit + itemCostWater + itemCostGelatin + itemCostSugar + itemCostCornstarch + itemCostGinger + itemCostLime;
+    // Dynamic Gelling Agent Logic
+    let gellingAmountText = "";
+    let itemCostGelling = 0;
+    const labelGelling = document.getElementById("labelGelling");
+    const subGelling = document.getElementById("subGelling");
+
+    if (gellingType === "gelatin") {
+      const gelatinTbsp = 1 * totalMult; // 1 tbsp base
+      gellingAmountText = formatFraction(gelatinTbsp, "tbsp");
+      itemCostGelling = Math.round(3500 * totalMult);
+      if (labelGelling) labelGelling.textContent = "Bovine Gelatin";
+      if (subGelling) subGelling.textContent = "Structure & chewiness setting agent";
+    } else {
+      const agarSachets = 1 * totalMult; // 1 sachet base
+      gellingAmountText = `${agarSachets} Sachet${agarSachets > 1 ? "s" : ""}`;
+      itemCostGelling = Math.round(4000 * totalMult);
+      if (labelGelling) labelGelling.textContent = "Agar Powder";
+      if (subGelling) subGelling.textContent = "Firm gel texture setting agent";
+    }
+
+    const totalCost = itemCostFruit + itemCostWater + itemCostGelling + itemCostSugar + itemCostCornstarch + itemCostGinger + itemCostLemon;
     const costPerBatch = Math.round(totalCost / qty);
 
     // Formatter Helpers
@@ -242,7 +263,7 @@ function initRecipeCalculator() {
     const displayTitle = document.getElementById("calcDisplayTitle");
     if (displayTitle) displayTitle.textContent = `${qty} ${qty === 1 ? "Batch" : "Batches"} PitaJell`;
 
-    // Row-by-Row Ingredient Updates
+    // Row Updates
     const elValFruit = document.getElementById("valFruit");
     const elPriceFruit = document.getElementById("priceFruit");
     const elFruitSub = document.getElementById("calcFruitSub");
@@ -255,10 +276,10 @@ function initRecipeCalculator() {
     if (elValWater) elValWater.textContent = `${waterMl} ml`;
     if (elPriceWater) elPriceWater.textContent = fmtPrice(itemCostWater);
 
-    const elValGelatin = document.getElementById("valGelatin");
-    const elPriceGelatin = document.getElementById("priceGelatin");
-    if (elValGelatin) elValGelatin.textContent = formatFraction(gelatinTbsp, "tbsp");
-    if (elPriceGelatin) elPriceGelatin.textContent = fmtPrice(itemCostGelatin);
+    const elValGelling = document.getElementById("valGelling");
+    const elPriceGelling = document.getElementById("priceGelling");
+    if (elValGelling) elValGelling.textContent = gellingAmountText;
+    if (elPriceGelling) elPriceGelling.textContent = fmtPrice(itemCostGelling);
 
     const elValSugar = document.getElementById("valSugar");
     const elPriceSugar = document.getElementById("priceSugar");
@@ -275,10 +296,10 @@ function initRecipeCalculator() {
     if (elValGinger) elValGinger.textContent = `${gingerGrams} g`;
     if (elPriceGinger) elPriceGinger.textContent = fmtPrice(itemCostGinger);
 
-    const elValLime = document.getElementById("valLime");
-    const elPriceLime = document.getElementById("priceLime");
-    if (elValLime) elValLime.textContent = `${limeMl} ml`;
-    if (elPriceLime) elPriceLime.textContent = fmtPrice(itemCostLime);
+    const elValLemon = document.getElementById("valLemon");
+    const elPriceLemon = document.getElementById("priceLemon");
+    if (elValLemon) elValLemon.textContent = `${lemonMl} ml`;
+    if (elPriceLemon) elPriceLemon.textContent = fmtPrice(itemCostLemon);
 
     // Footer Total Cost Updates
     const elCostPerBatch = document.getElementById("calcCostPerBatch");
