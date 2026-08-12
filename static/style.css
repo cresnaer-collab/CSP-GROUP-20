@@ -1311,3 +1311,16 @@ a:focus-visible, button:focus-visible, select:focus-visible {
     grid-template-columns: 1fr;
   }
 }
+/* Position mapping for steps 9 to 13 in snake flowchart */
+.flow-step--9  { grid-column: 1; grid-row: 5; }
+.flow-step--10 { grid-column: 2; grid-row: 5; }
+.flow-step--11 { grid-column: 2; grid-row: 6; }
+.flow-step--12 { grid-column: 1; grid-row: 6; }
+.flow-step--13 { grid-column: 1; grid-row: 7; }
+
+@media (max-width: 768px) {
+  .flow-step--9, .flow-step--10, .flow-step--11, .flow-step--12, .flow-step--13 {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
