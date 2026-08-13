@@ -1324,3 +1324,84 @@ a:focus-visible, button:focus-visible, select:focus-visible {
     grid-row: auto;
   }
 }
+/* =============================================================================
+   SECTION G: FULL LITERATURE REFERENCES & VIDEO
+   ============================================================================= */
+.ref-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.ref-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-height: 480px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.ref-list-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.ref-list-container::-webkit-scrollbar-thumb {
+  background: var(--primary-light);
+  border-radius: var(--r-full);
+}
+
+.ref-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 16px 20px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: border-color 0.2s var(--ease), transform 0.2s;
+}
+
+.ref-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.ref-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--primary);
+  background: var(--primary-pale);
+  padding: 2px 8px;
+  border-radius: 4px;
+  align-self: flex-start;
+}
+
+.ref-citation {
+  font-size: 13.5px;
+  color: var(--text-dark);
+  line-height: 1.55;
+}
+
+.ref-link {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--primary);
+  text-decoration: none;
+  align-self: flex-start;
+  transition: color 0.18s;
+}
+
+.ref-link:hover {
+  color: var(--primary-deep);
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .ref-grid {
+    grid-template-columns: 1fr;
+  }
+}
