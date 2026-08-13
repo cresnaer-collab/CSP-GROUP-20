@@ -578,6 +578,136 @@ img { display: block; max-width: 100%; }
     grid-template-columns: 1fr;
   }
 }
+/* =============================================================================
+   STEM FRAMEWORK — EDITORIAL ALTERNATING ROWS
+   ============================================================================= */
+.stem-editorial {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+}
+
+.stem-row {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 48px;
+  align-items: start;
+  padding: 56px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.stem-row:first-child { padding-top: 8px; }
+.stem-row:last-child   { border-bottom: none; padding-bottom: 8px; }
+
+/* Alternate alignment: even rows flip the letter/icon to the right */
+.stem-row:nth-child(even) {
+  grid-template-columns: 1fr 220px;
+}
+.stem-row:nth-child(even) .stem-mark {
+  order: 2;
+}
+.stem-row:nth-child(even) .stem-body {
+  order: 1;
+}
+.stem-row:nth-child(even) .stem-body {
+  text-align: left;
+}
+
+/* Left/right mark column: big letter + small icon */
+.stem-mark {
+  position: sticky;
+  top: 90px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.stem-mark .stem-letter {
+  font-family: var(--font-sans);
+  font-size: 64px;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.stem-mark .stem-icon-box {
+  width: 34px;
+  height: 34px;
+  background: var(--primary-pale);
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+.stem-mark .stem-icon-box svg { width: 18px; height: 18px; }
+
+/* Text body column */
+.stem-body {
+  max-width: 620px;
+}
+
+.stem-body .stem-discipline {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.stem-body .stem-q {
+  font-size: 24px;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--primary-dark);
+  line-height: 1.35;
+  margin-bottom: 14px;
+}
+
+.stem-body .stem-explain {
+  font-size: 15.5px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+
+.stem-body .stem-example {
+  font-size: 15.5px;
+  color: var(--text-dark);
+  line-height: 1.75;
+  padding-left: 18px;
+  border-left: 2px solid var(--border-hover);
+}
+
+.stem-body .stem-example strong {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .stem-row,
+  .stem-row:nth-child(even) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 40px 0;
+  }
+  .stem-row:nth-child(even) .stem-mark { order: 0; }
+  .stem-row:nth-child(even) .stem-body { order: 0; }
+  .stem-mark { position: static; }
+  .stem-mark .stem-letter { font-size: 48px; }
+  .stem-body .stem-q { font-size: 20px; }
+}
+
+@media (max-width: 480px) {
+  .stem-row { padding: 32px 0; }
+  .stem-body .stem-q { font-size: 18px; }
+  .stem-body .stem-example { padding-left: 14px; }
+}
 
 /* =============================================================================
    D: BIOACTIVE & ANTIOXIDANT HEALTH BENEFITS (STANDALONE SECTION)
