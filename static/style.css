@@ -11,13 +11,13 @@
   --primary-dark:   #580827;
   --primary-light:  #E65C8A;
   --primary-pale:   #FDEBF1;
-  --bg-color:       #FFF7F8;
+  --bg-color:       #FBF3E1;
   --surface:        #FFFFFF;
   --border:         rgba(184, 15, 80, 0.10);
   --border-hover:   rgba(184, 15, 80, 0.22);
   --text-dark:      #201319;
   --text-muted:     #63525A;
-  --glass-bg:       rgba(255, 247, 248, 0.92);
+  --glass-bg:       rgba(251, 243, 225, 0.92);
   --glass-blur:     blur(12px);
   --font-sans:      'Inter', system-ui, sans-serif;
   --font-mono:      'IBM Plex Mono', monospace;
