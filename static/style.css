@@ -1681,3 +1681,70 @@ a:focus-visible, button:focus-visible, select:focus-visible {
   font-size: 52px !important;      /* Tetap dominan tapi seimbang dengan icon baru */
   line-height: 1;
 }
+/* =============================================================================
+   POSTER ACCENTS & VISUAL ENHANCEMENTS
+   ============================================================================= */
+
+/* 1. Header Kapsul Magenta Khas Poster */
+.section-badge-header {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #8E0A3D 0%, #B80F50 100%);
+  color: #FFFFFF !important;
+  padding: 8px 24px;
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 14px rgba(142, 10, 61, 0.22);
+  margin-bottom: 20px;
+}
+
+/* 2. Highlight Keyword (Persis Teks Bold di Poster) */
+.highlight-term {
+  color: #8E0A3D;
+  font-weight: 700;
+  background: rgba(184, 15, 80, 0.08);
+  padding: 2px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(184, 15, 80, 0.15);
+}
+
+/* 3. Bingkai Kartu Khas Poster */
+.poster-card {
+  background: #FFFDF9;
+  border: 1.5px solid rgba(184, 15, 80, 0.2);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 18px rgba(142, 10, 61, 0.05);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.poster-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-3px);
+}
+
+/* 4. Pola Dot / Halftone Accent Background */
+.halftone-bg {
+  background-image: radial-gradient(rgba(184, 15, 80, 0.18) 1.2px, transparent 1.2px);
+  background-size: 10px 10px;
+}
+
+/* 5. Aksen Ikon Bulat untuk Judul Section (Analysis, Conclusion, dll) */
+.icon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: #FFFFFF;
+  color: #8E0A3D;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: 800;
+}
