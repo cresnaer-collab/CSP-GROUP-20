@@ -1370,15 +1370,17 @@ a:focus-visible, button:focus-visible, select:focus-visible {
 }
 
 .ref-tag {
-  font-family: var(--font-mono);
-  font-size: 11px;
+  font-family: var(--font-sans);
+  font-size: 13px;
   font-weight: 700;
-  color: var(--primary);
-  background: var(--primary-pale);
-  padding: 2px 8px;
-  border-radius: 4px;
+  color: var(--primary); /* Warna merah/berry khas PitaJell (persis gambar 2) */
+  background: transparent; /* Hapus background */
+  padding: 0; /* Hapus kotak padding */
+  border-radius: 0;
   align-self: flex-start;
+  letter-spacing: -0.01em;
 }
+
 
 .ref-citation {
   font-size: 13.5px;
