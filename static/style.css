@@ -1645,3 +1645,39 @@ a:focus-visible, button:focus-visible, select:focus-visible {
     grid-template-columns: 1fr;
   }
 }
+/* ── 1. Memperbesar Tulisan SCIENCE, TECHNOLOGY, ENGINEERING, MATHEMATICS ── */
+.stem-label,
+.stem-card-header .stem-category,
+/* Tambahkan class yang kamu pakai jika berbeda */
+.stem-category {
+  font-size: 16px !important;     /* Sebelumnya kecil, kita naikkan ke 16px */
+  font-weight: 800 !important;     /* Dibuat lebih tebal agar tegas */
+  letter-spacing: 0.08em;          /* Jarak antar huruf tetap elegan */
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+/* ── 2. Memperbesar Box Icon di Samping Huruf S T E M ── */
+.stem-icon {
+  width: 58px !important;          /* Dari 44px dinaikkan ke 58px */
+  height: 58px !important;
+  border-radius: 16px !important;  /* Rounded corner disesuaikan */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Memperbesar SVG / Icon di dalam Box Icon */
+.stem-icon svg,
+.stem-icon i {
+  width: 28px !important;          /* Ukuran icon SVG di dalamnya */
+  height: 28px !important;
+  font-size: 28px !important;
+}
+
+/* ── 3. Penyesuaian Huruf S T E M (Opsional agar makin balance) ── */
+.stem-letter {
+  font-size: 52px !important;      /* Tetap dominan tapi seimbang dengan icon baru */
+  line-height: 1;
+}
