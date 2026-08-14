@@ -1782,7 +1782,7 @@ body::before {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: right center;
-  opacity: 0.23;
+  opacity: 0.40;
   z-index: -1;
   pointer-events: none;
 }
