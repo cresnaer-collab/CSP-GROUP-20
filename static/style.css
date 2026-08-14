@@ -1749,74 +1749,65 @@ a:focus-visible, button:focus-visible, select:focus-visible {
   font-weight: 800;
 }
 /* =============================================================================
-   AMBIENT DECORATION — Dragon Fruit Batik Motif & Color Blobs
+   BRAND WATERMARKS — pakai artwork asli PitaJell (dragon & dragon fruit)
    ============================================================================= */
 
-/* ── Batik-inspired background texture (spike + seed motif) ── */
-body {
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%23B80F50' fill-opacity='0.05'%3E%3Cpath d='M20 10 L24 18 L16 18 Z'/%3E%3Ccircle cx='20' cy='24' r='1.4'/%3E%3Cpath d='M60 30 L64 38 L56 38 Z'/%3E%3Ccircle cx='60' cy='44' r='1.4'/%3E%3Cpath d='M10 55 L14 63 L6 63 Z'/%3E%3Ccircle cx='10' cy='69' r='1.4'/%3E%3Cpath d='M50 65 L54 73 L46 73 Z'/%3E%3Ccircle cx='50' cy='79' r='1.4'/%3E%3C/g%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 80px 80px;
-}
-
-/* ── Ambient magenta blobs (fixed, behind all content) ── */
-body::before,
-body::after {
+/* Dragon watermark, fixed di pojok kanan bawah, ikut scroll, sangat subtle */
+body::before {
   content: '';
   position: fixed;
-  border-radius: 50%;
-  filter: blur(90px);
+  bottom: -60px;
+  right: -80px;
+  width: 480px;
+  height: 500px;
+  background-image: url('naga-watermark.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.07;
+  z-index: -1;
+  pointer-events: none;
+  transform: rotate(-6deg);
+}
+
+/* Aksen dragon fruit line-art di section Background, echo dari poster */
+#background { position: relative; }
+#background::before {
+  content: '';
+  position: absolute;
+  top: -24px;
+  right: 0;
+  width: 280px;
+  height: 150px;
+  background-image: url('dragonfruit-lineart.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right center;
+  opacity: 0.16;
   z-index: -1;
   pointer-events: none;
 }
-body::before {
-  width: 460px;
-  height: 460px;
-  top: -140px;
-  right: -120px;
-  background: radial-gradient(circle, rgba(184,15,80,0.12), transparent 70%);
-}
-body::after {
-  width: 420px;
-  height: 420px;
-  bottom: 8%;
-  left: -160px;
-  background: radial-gradient(circle, rgba(230,92,138,0.11), transparent 70%);
-}
 
-/* ── Ornamental divider between major sections (pure CSS, no HTML needed) ── */
-.section { position: relative; }
-.section:not(:first-of-type)::before {
+/* Aksen dragon fruit line-art di section References, dibalik biar variatif */
+#references { position: relative; }
+#references::before {
   content: '';
   position: absolute;
-  top: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 42px;
-  height: 42px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'%3E%3Ccircle cx='30' cy='30' r='15' fill='%23FDEBF1' stroke='%23B80F50' stroke-width='2'/%3E%3Ccircle cx='24' cy='24' r='1.6' fill='%23580827'/%3E%3Ccircle cx='35' cy='23' r='1.6' fill='%23580827'/%3E%3Ccircle cx='30' cy='33' r='1.6' fill='%23580827'/%3E%3Ccircle cx='22' cy='35' r='1.6' fill='%23580827'/%3E%3Ccircle cx='38' cy='33' r='1.6' fill='%23580827'/%3E%3Cpath d='M30 6 L34 15 L26 15 Z' fill='%23E65C8A'/%3E%3Cpath d='M30 54 L34 45 L26 45 Z' fill='%23E65C8A'/%3E%3Cpath d='M6 30 L15 34 L15 26 Z' fill='%23E65C8A'/%3E%3Cpath d='M54 30 L45 34 L45 26 Z' fill='%23E65C8A'/%3E%3C/svg%3E");
+  bottom: -30px;
+  left: -40px;
+  width: 300px;
+  height: 160px;
+  background-image: url('dragonfruit-lineart.png');
   background-size: contain;
   background-repeat: no-repeat;
-  opacity: 0.9;
+  opacity: 0.14;
+  transform: scaleX(-1);
+  z-index: -1;
+  pointer-events: none;
 }
 
-/* ── Sparkle accent on section titles ── */
-.section h2 {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
-.section h2::after {
-  content: '✦';
-  font-size: 15px;
-  color: var(--primary-light);
-  opacity: 0.75;
-}
-
-/* Mobile: keep blobs from causing overflow issues */
+/* Mobile: kecilkan / sembunyikan yang berat biar nggak penuh sesak */
 @media (max-width: 768px) {
-  body::before, body::after { display: none; }
-  .section:not(:first-of-type)::before { width: 32px; height: 32px; top: 22px; }
+  body::before { width: 300px; height: 320px; opacity: 0.05; }
+  #background::before,
+  #references::before { display: none; }
 }
