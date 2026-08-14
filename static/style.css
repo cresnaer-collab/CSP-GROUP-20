@@ -1763,7 +1763,7 @@ body::before {
   background-image: url('naga-watermark.png');
   background-size: contain;
   background-repeat: no-repeat;
-  opacity: 0.16;
+  opacity: 0.32;
   z-index: -1;
   pointer-events: none;
   transform: rotate(-6deg);
